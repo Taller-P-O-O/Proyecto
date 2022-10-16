@@ -35,9 +35,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/BANGHO/eclipse/jee-2022-06/eclipse/librerias/Jcalendar/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/BANGHO/eclipse/jee-2022-06/eclipse/librerias/Jcalendar/jgoodies-common-1.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/BANGHO/eclipse/jee-2022-06/eclipse/librerias/Jcalendar/jgoodies-looks-2.4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/BANGHO/eclipse/jee-2022-06/eclipse/librerias/Jcalendar/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Perfomance/Music/taller/librerias/JCalendar/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Perfomance/Music/taller/librerias/JCalendar/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Perfomance/Music/taller/librerias/JCalendar/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Perfomance/Music/taller/librerias/JCalendar/junit-4.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
