@@ -12,8 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
-public class RegistroLectores extends JFrame {
+public class RegistroProfesores extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -27,6 +29,8 @@ public class RegistroLectores extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField textField_11;
 
 	/**
 	 * Launch the application.
@@ -35,7 +39,7 @@ public class RegistroLectores extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroLectores frame = new RegistroLectores();
+					RegistroProfesores frame = new RegistroProfesores();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,10 +51,10 @@ public class RegistroLectores extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroLectores() {
+	public RegistroProfesores() {
 		setTitle("Registro de Lectores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 389, 545);
+		setBounds(100, 100, 389, 589);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -165,7 +169,16 @@ public class RegistroLectores extends JFrame {
 		contentPane.add(lblNewLabel_3_6);
 		
 		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.setBounds(143, 472, 89, 23);
+		btnNewButton.setBounds(141, 516, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		textField_11 = new JTextField();
+		textField_11.setColumns(10);
+		textField_11.setBounds(156, 454, 140, 25);
+		contentPane.add(textField_11);
+		
+		JLabel lblNewLabel_3_6_1 = new JLabel("Carreras:");
+		lblNewLabel_3_6_1.setBounds(98, 459, 48, 14);
+		contentPane.add(lblNewLabel_3_6_1);
 	}
 }
