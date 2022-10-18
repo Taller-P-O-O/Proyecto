@@ -39,6 +39,7 @@ public class ConsultaObras extends JFrame {
 	 * Create the frame.
 	 */
 	public ConsultaObras() {
+		setTitle("Buscador obras");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 742, 486);
 		contentPane = new JPanel();
@@ -92,5 +93,21 @@ public class ConsultaObras extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		
+		JButton btnNewButton_1 = new JButton("Registrar edicion");
+		btnNewButton_1.setBounds(281, 422, 113, 23);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("Registrar ejemplar");
+		btnNewButton_1_1.setBounds(404, 422, 127, 23);
+		contentPane.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_1_2 = new JButton("Listado de ediciones");
+		btnNewButton_1_2.setBounds(133, 422, 138, 23);
+		contentPane.add(btnNewButton_1_2);
+		
+		JButton btnNewButton_1_3 = new JButton("Ver indice");
+		btnNewButton_1_3.setBounds(541, 422, 113, 23);
+		contentPane.add(btnNewButton_1_3);
 	}
 }
