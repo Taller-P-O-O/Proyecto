@@ -151,7 +151,7 @@ public class RegistroObras extends JFrame {
 		contentPane.add(lblNewLabel_3_5);
 		
 		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.setBounds(143, 472, 89, 23);
+		btnNewButton.setBounds(207, 472, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		textField_10 = new JTextField();
@@ -165,5 +165,9 @@ public class RegistroObras extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(90, 472, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

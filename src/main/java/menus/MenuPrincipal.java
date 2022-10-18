@@ -59,9 +59,6 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar coleccion");
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Registrar edicion");
-		mnNewMenu.add(mntmNewMenuItem_3);
-		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Consultar obras");
 		mnNewMenu.add(mntmNewMenuItem_8);
 		
@@ -118,7 +115,7 @@ public class MenuPrincipal extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblNewLabel = new JLabel("Prestamos del dia");
-		lblNewLabel.setBounds(257, 28, 91, 14);
+		lblNewLabel.setBounds(275, 33, 91, 14);
 		contentPane.add(lblNewLabel);
 	}
 }
