@@ -11,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class MenuPrincipal extends JFrame {
 
@@ -39,7 +40,7 @@ public class MenuPrincipal extends JFrame {
 	public MenuPrincipal() {
 		setTitle("Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 657, 446);
+		setBounds(100, 100, 657, 474);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -107,6 +108,15 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Lectores con mas multas");
 		mnNewMenu_4.add(mntmNewMenuItem_14);
 		
+		JMenu mnNewMenu_5 = new JMenu("Multas");
+		menuBar.add(mnNewMenu_5);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Consultar Multas");
+		mnNewMenu_5.add(mntmNewMenuItem_3);
+		
+		JMenuItem mntmNewMenuItem_15 = new JMenuItem("Consultar multas por periodo");
+		mnNewMenu_5.add(mntmNewMenuItem_15);
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 47, 625, 349);
 		contentPane.add(scrollPane);
@@ -114,8 +124,12 @@ public class MenuPrincipal extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JLabel lblNewLabel = new JLabel("Prestamos del dia");
-		lblNewLabel.setBounds(275, 33, 91, 14);
+		JLabel lblNewLabel = new JLabel("Devoluciones del dia");
+		lblNewLabel.setBounds(250, 33, 102, 14);
 		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Registrar devolucion");
+		btnNewButton.setBounds(243, 407, 146, 23);
+		contentPane.add(btnNewButton);
 	}
 }

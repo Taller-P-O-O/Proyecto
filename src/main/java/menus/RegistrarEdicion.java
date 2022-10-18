@@ -12,13 +12,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JYearChooser;
 
 public class RegistrarEdicion extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
@@ -66,10 +66,7 @@ public class RegistrarEdicion extends JFrame {
 		textField_1.setBounds(180, 47, 140, 25);
 		contentPane.add(textField_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(180, 119, 140, 25);
-		contentPane.add(textField_2);
+
 		
 		JLabel lblEditorial = new JLabel("Editorial:");
 		lblEditorial.setBounds(128, 16, 42, 14);
@@ -168,5 +165,9 @@ public class RegistrarEdicion extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(128, 463, 89, 23);
 		contentPane.add(btnAtras);
+		
+		JYearChooser yearChooser = new JYearChooser();
+		yearChooser.setBounds(180, 124, 48, 20);
+		contentPane.add(yearChooser);
 	}
 }
