@@ -1,4 +1,4 @@
-package menus;
+package menusLibros;
 
 import java.awt.EventQueue;
 
@@ -12,10 +12,13 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
+import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JList;
 
-public class RegistroProfesores extends JFrame {
+public class RegistroObras extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -27,10 +30,7 @@ public class RegistroProfesores extends JFrame {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JTextField textField_8;
-	private JTextField textField_9;
 	private JTextField textField_10;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField_11;
 
 	/**
 	 * Launch the application.
@@ -39,7 +39,7 @@ public class RegistroProfesores extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroProfesores frame = new RegistroProfesores();
+					RegistroObras frame = new RegistroObras();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,10 +51,10 @@ public class RegistroProfesores extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroProfesores() {
-		setTitle("Registro de Lectores");
+	public RegistroObras() {
+		setTitle("Registro de Obras");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 389, 589);
+		setBounds(100, 100, 389, 545);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -76,16 +76,16 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(100, 27, 46, 14);
+		JLabel lblNewLabel = new JLabel("Tipo:");
+		lblNewLabel.setBounds(122, 27, 24, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Apellido:");
-		lblNewLabel_1.setBounds(100, 63, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("Tematica:");
+		lblNewLabel_1.setBounds(99, 63, 47, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Tipo de Documento:");
-		lblNewLabel_2.setBounds(50, 99, 96, 14);
+		JLabel lblNewLabel_2 = new JLabel("Titulo:");
+		lblNewLabel_2.setBounds(116, 99, 30, 14);
 		contentPane.add(lblNewLabel_2);
 		
 		textField_3 = new JTextField();
@@ -93,25 +93,21 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
-		JLabel lblNewLabel_3 = new JLabel("Sexo:");
-		lblNewLabel_3.setBounds(118, 171, 28, 14);
+		JLabel lblNewLabel_3 = new JLabel("Subtitulo:");
+		lblNewLabel_3.setBounds(99, 135, 47, 14);
 		contentPane.add(lblNewLabel_3);
-		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(156, 202, 140, 25);
-		contentPane.add(dateChooser);
 		
 		textField_4 = new JTextField();
 		textField_4.setBounds(156, 94, 140, 25);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
-		JLabel lblNewLabel_4 = new JLabel("Nro. de documento:");
-		lblNewLabel_4.setBounds(50, 135, 96, 14);
+		JLabel lblNewLabel_4 = new JLabel("Autor Nro. 1:");
+		lblNewLabel_4.setBounds(81, 171, 65, 14);
 		contentPane.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("Fecha de nacimiento:");
-		lblNewLabel_5.setBounds(50, 213, 104, 14);
+		JLabel lblNewLabel_5 = new JLabel("Autor Nro. 2:");
+		lblNewLabel_5.setBounds(77, 207, 69, 14);
 		contentPane.add(lblNewLabel_5);
 		
 		textField_5 = new JTextField();
@@ -119,8 +115,8 @@ public class RegistroProfesores extends JFrame {
 		textField_5.setBounds(156, 238, 140, 25);
 		contentPane.add(textField_5);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("Num. Celular:");
-		lblNewLabel_3_1.setBounds(81, 243, 65, 14);
+		JLabel lblNewLabel_3_1 = new JLabel("Autor Nro. 3:");
+		lblNewLabel_3_1.setBounds(81, 249, 65, 14);
 		contentPane.add(lblNewLabel_3_1);
 		
 		textField_6 = new JTextField();
@@ -128,8 +124,8 @@ public class RegistroProfesores extends JFrame {
 		textField_6.setBounds(156, 274, 140, 25);
 		contentPane.add(textField_6);
 		
-		JLabel lblNewLabel_3_2 = new JLabel("Nacionalidad:");
-		lblNewLabel_3_2.setBounds(81, 279, 65, 14);
+		JLabel lblNewLabel_3_2 = new JLabel("Genero:");
+		lblNewLabel_3_2.setBounds(107, 279, 39, 14);
 		contentPane.add(lblNewLabel_3_2);
 		
 		textField_7 = new JTextField();
@@ -137,8 +133,8 @@ public class RegistroProfesores extends JFrame {
 		textField_7.setBounds(156, 310, 140, 25);
 		contentPane.add(textField_7);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("Codigo Postal:");
-		lblNewLabel_3_3.setBounds(77, 315, 69, 14);
+		JLabel lblNewLabel_3_3 = new JLabel("Caracteristica:");
+		lblNewLabel_3_3.setBounds(73, 315, 73, 14);
 		contentPane.add(lblNewLabel_3_3);
 		
 		textField_8 = new JTextField();
@@ -146,39 +142,32 @@ public class RegistroProfesores extends JFrame {
 		textField_8.setBounds(156, 346, 140, 25);
 		contentPane.add(textField_8);
 		
-		JLabel lblNewLabel_3_4 = new JLabel("Domicilio:");
-		lblNewLabel_3_4.setBounds(100, 351, 46, 14);
+		JLabel lblNewLabel_3_4 = new JLabel("ISBN:");
+		lblNewLabel_3_4.setBounds(116, 351, 30, 14);
 		contentPane.add(lblNewLabel_3_4);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(156, 382, 140, 25);
-		contentPane.add(textField_9);
-		
-		JLabel lblNewLabel_3_5 = new JLabel("Departamento:");
-		lblNewLabel_3_5.setBounds(73, 387, 73, 14);
+		JLabel lblNewLabel_3_5 = new JLabel("Indice:");
+		lblNewLabel_3_5.setBounds(107, 387, 39, 14);
 		contentPane.add(lblNewLabel_3_5);
+		
+		JButton btnNewButton = new JButton("Registrar");
+		btnNewButton.setBounds(207, 472, 89, 23);
+		contentPane.add(btnNewButton);
 		
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(156, 418, 140, 25);
+		textField_10.setBounds(156, 202, 140, 25);
 		contentPane.add(textField_10);
 		
-		JLabel lblNewLabel_3_6 = new JLabel("Localidad:");
-		lblNewLabel_3_6.setBounds(98, 423, 48, 14);
-		contentPane.add(lblNewLabel_3_6);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(156, 382, 140, 79);
+		contentPane.add(scrollPane);
 		
-		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.setBounds(141, 516, 89, 23);
-		contentPane.add(btnNewButton);
+		JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(156, 454, 140, 25);
-		contentPane.add(textField_11);
-		
-		JLabel lblNewLabel_3_6_1 = new JLabel("Carreras:");
-		lblNewLabel_3_6_1.setBounds(98, 459, 48, 14);
-		contentPane.add(lblNewLabel_3_6_1);
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(90, 472, 89, 23);
+		contentPane.add(btnAtras);
 	}
 }

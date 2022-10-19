@@ -1,4 +1,4 @@
-package menus;
+package menusLectores;
 
 import java.awt.EventQueue;
 
@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
-public class RegistroAlumnosYPublicoGeneral extends JFrame {
+public class RegistroAlumnos extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -38,7 +38,7 @@ public class RegistroAlumnosYPublicoGeneral extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroAlumnosYPublicoGeneral frame = new RegistroAlumnosYPublicoGeneral();
+					RegistroAlumnos frame = new RegistroAlumnos();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class RegistroAlumnosYPublicoGeneral extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroAlumnosYPublicoGeneral() {
+	public RegistroAlumnos() {
 		setTitle("Registro de Lectores");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 546);

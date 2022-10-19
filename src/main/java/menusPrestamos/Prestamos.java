@@ -1,4 +1,4 @@
-package menus;
+package menusPrestamos;
 
 import java.awt.EventQueue;
 

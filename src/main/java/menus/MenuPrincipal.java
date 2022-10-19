@@ -81,17 +81,11 @@ public class MenuPrincipal extends JFrame {
 		JMenu mnNewMenu_2 = new JMenu("Prestamos");
 		menuBar.add(mnNewMenu_2);
 		
-		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Registrar prestamo");
-		mnNewMenu_2.add(mntmNewMenuItem_7);
-		
 		JMenuItem mntmNewMenuItem_13 = new JMenuItem("Consultar Prestamos");
 		mnNewMenu_2.add(mntmNewMenuItem_13);
 		
 		JMenu mnNewMenu_3 = new JMenu("Reservas");
 		menuBar.add(mnNewMenu_3);
-		
-		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Reservar libro");
-		mnNewMenu_3.add(mntmNewMenuItem_4);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Consultar reservas");
 		mnNewMenu_3.add(mntmNewMenuItem_6);
@@ -111,7 +105,7 @@ public class MenuPrincipal extends JFrame {
 		JMenu mnNewMenu_5 = new JMenu("Multas");
 		menuBar.add(mnNewMenu_5);
 		
-		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Consultar Multas");
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Consultar multas");
 		mnNewMenu_5.add(mntmNewMenuItem_3);
 		
 		JMenuItem mntmNewMenuItem_15 = new JMenuItem("Consultar multas por periodo");

@@ -1,4 +1,4 @@
-package menus;
+package menusLibros;
 
 import java.awt.EventQueue;
 
@@ -58,6 +58,7 @@ public class ConsultaObras extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Titulo");
+		rdbtnNewRadioButton.setSelected(true);
 		buttonGroup.add(rdbtnNewRadioButton);
 		rdbtnNewRadioButton.setBounds(20, 38, 51, 23);
 		contentPane.add(rdbtnNewRadioButton);
@@ -77,9 +78,9 @@ public class ConsultaObras extends JFrame {
 		rdbtnNewRadioButton_1_2.setBounds(490, 38, 55, 23);
 		contentPane.add(rdbtnNewRadioButton_1_2);
 		
-		JRadioButton rdbtnNewRadioButton_1_3 = new JRadioButton("Editorial");
+		JRadioButton rdbtnNewRadioButton_1_3 = new JRadioButton("Tematica");
 		buttonGroup.add(rdbtnNewRadioButton_1_3);
-		rdbtnNewRadioButton_1_3.setBounds(628, 38, 63, 23);
+		rdbtnNewRadioButton_1_3.setBounds(628, 38, 69, 23);
 		contentPane.add(rdbtnNewRadioButton_1_3);
 		
 		JRadioButton rdbtnNewRadioButton_1_4 = new JRadioButton("Genero");
@@ -95,19 +96,19 @@ public class ConsultaObras extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnNewButton_1 = new JButton("Registrar edicion");
-		btnNewButton_1.setBounds(281, 422, 113, 23);
+		btnNewButton_1.setBounds(375, 422, 113, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_1_1 = new JButton("Registrar ejemplar");
-		btnNewButton_1_1.setBounds(404, 422, 127, 23);
-		contentPane.add(btnNewButton_1_1);
-		
 		JButton btnNewButton_1_2 = new JButton("Listado de ediciones");
-		btnNewButton_1_2.setBounds(133, 422, 138, 23);
+		btnNewButton_1_2.setBounds(209, 422, 138, 23);
 		contentPane.add(btnNewButton_1_2);
 		
 		JButton btnNewButton_1_3 = new JButton("Ver indice");
-		btnNewButton_1_3.setBounds(541, 422, 113, 23);
+		btnNewButton_1_3.setBounds(533, 422, 113, 23);
 		contentPane.add(btnNewButton_1_3);
+		
+		JButton btnNewButton_2 = new JButton("Atras");
+		btnNewButton_2.setBounds(93, 422, 89, 23);
+		contentPane.add(btnNewButton_2);
 	}
 }

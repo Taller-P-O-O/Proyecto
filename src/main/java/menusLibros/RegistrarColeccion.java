@@ -1,4 +1,4 @@
-package menus;
+package menusLibros;
 
 import java.awt.EventQueue;
 
@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Multa extends JFrame {
+public class RegistrarColeccion extends JFrame {
 
 	private JPanel contentPane;
 
@@ -17,7 +17,7 @@ public class Multa extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Multa frame = new Multa();
+					RegistrarColeccion frame = new RegistrarColeccion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,7 +29,7 @@ public class Multa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Multa() {
+	public RegistrarColeccion() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

@@ -1,4 +1,4 @@
-package menus;
+package menusReservas;
 
 import java.awt.EventQueue;
 
