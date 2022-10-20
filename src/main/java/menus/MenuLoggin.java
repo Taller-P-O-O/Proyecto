@@ -68,6 +68,8 @@ public class MenuLoggin extends JFrame {
 		JButton btnNewButton_1 = new JButton("Registrarse");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			  JButton registro = (JButton) e.getSource();
+			  registro.setText("hola");
 			}
 		});
 		btnNewButton_1.setBounds(215, 207, 103, 23);
