@@ -90,26 +90,20 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Consultar reservas");
 		mnNewMenu_3.add(mntmNewMenuItem_6);
 		
-		JMenu mnNewMenu_4 = new JMenu("Rankings");
-		menuBar.add(mnNewMenu_4);
-		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Obras mas solicitadas por alum. y prof.");
-		mnNewMenu_4.add(mntmNewMenuItem_1);
-		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Obras mas solicitadas por publico gen.");
-		mnNewMenu_4.add(mntmNewMenuItem_5);
-		
-		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Lectores con mas multas");
-		mnNewMenu_4.add(mntmNewMenuItem_14);
-		
 		JMenu mnNewMenu_5 = new JMenu("Multas");
 		menuBar.add(mnNewMenu_5);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Consultar multas");
 		mnNewMenu_5.add(mntmNewMenuItem_3);
 		
-		JMenuItem mntmNewMenuItem_15 = new JMenuItem("Consultar multas por periodo");
-		mnNewMenu_5.add(mntmNewMenuItem_15);
+		JMenu mnNewMenu_4 = new JMenu("Rankings");
+		menuBar.add(mnNewMenu_4);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Obras mas solicitadas");
+		mnNewMenu_4.add(mntmNewMenuItem_1);
+		
+		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Lectores con mas multas");
+		mnNewMenu_4.add(mntmNewMenuItem_14);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 47, 625, 349);

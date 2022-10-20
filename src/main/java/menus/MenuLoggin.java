@@ -82,9 +82,8 @@ public class MenuLoggin extends JFrame {
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setIcon(new ImageIcon(MenuLoggin.class.getResource("/menus/biblioteca-logo.png")));
-		lblNewLabel_2.setBounds(74, 13, 259, 120);
+		lblNewLabel_2.setBounds(84, 42, 218, 76);
 		contentPane.add(lblNewLabel_2);
 	}
 }

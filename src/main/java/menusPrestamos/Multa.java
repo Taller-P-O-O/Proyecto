@@ -48,7 +48,7 @@ public class Multa extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(new Integer(4), new Integer(0), null, new Integer(1)));
+		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
 		spinner.setBounds(186, 71, 71, 20);
 		contentPane.add(spinner);
 		
