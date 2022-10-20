@@ -19,10 +19,13 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 
 public class MenuLoggin extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
+
 
 	/**
 	 * Launch the application.
@@ -68,8 +71,12 @@ public class MenuLoggin extends JFrame {
 		JButton btnNewButton_1 = new JButton("Registrarse");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Registro reg = new Registro();
+				reg.setVisible(true);
+
 			}
 		});
+
 		btnNewButton_1.setBounds(215, 207, 103, 23);
 		contentPane.add(btnNewButton_1);
 		
@@ -83,7 +90,8 @@ public class MenuLoggin extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("");
 		lblNewLabel_2.setIcon(new ImageIcon(MenuLoggin.class.getResource("/menus/biblioteca-logo.png")));
-		lblNewLabel_2.setBounds(84, 42, 218, 76);
+		lblNewLabel_2.setBounds(84, 11, 234, 122);
 		contentPane.add(lblNewLabel_2);
-	}
+		
+}
 }
