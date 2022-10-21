@@ -10,6 +10,8 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
 
 import com.jgoodies.looks.windows.WindowsLookAndFeel;
 
+import biblioteca.ConexionObjetosMenus;
+
 import javax.swing.JList;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -32,6 +34,7 @@ import javax.swing.Action;
 public class MenuLoggin extends JFrame {
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private final ConexionObjetosMenus datos;
 
 
 	/**
@@ -41,7 +44,7 @@ public class MenuLoggin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuLoggin frame = new MenuLoggin();
+					MenuLoggin frame = new MenuLoggin( new ConexionObjetosMenus());
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,8 +56,9 @@ public class MenuLoggin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MenuLoggin() {
+	public MenuLoggin(ConexionObjetosMenus dato) {
 		setTitle("Biblioteca");
+        datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 407, 300);
 		JPanel contentPane = new JPanel();
@@ -80,7 +84,7 @@ public class MenuLoggin extends JFrame {
 		JButton btnNewButton_1 = new JButton("Registrarse");
 		btnNewButton_1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				Registro reg = new Registro();
+				Registro reg = new Registro(datos);
 				reg.setVisible(true);
                 MenuLoggin.this.setVisible(false);
 			}

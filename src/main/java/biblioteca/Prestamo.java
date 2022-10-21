@@ -1,6 +1,7 @@
 package biblioteca;
 
 import java.time.*;
+import java.util.List;
 
 public class Prestamo {
 	
@@ -13,6 +14,7 @@ public class Prestamo {
 	private String nombreFuncionario;
 	private int diasPrestamo;
 	private Ejemplar ejemplarPrestado;
+	private List<Multa> Multas;
 	
 	public LocalDate getFecha() {
 		return fecha;

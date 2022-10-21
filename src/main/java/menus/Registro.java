@@ -6,9 +6,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import biblioteca.ConexionObjetosMenus;
+
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,28 +23,18 @@ public class Registro extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JPasswordField passwordField;
+	private final ConexionObjetosMenus datos;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Registro frame = new Registro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Registro() {
+	public Registro(ConexionObjetosMenus dato) {
 		setTitle("Registro");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 342, 231);
 		contentPane = new JPanel();
@@ -49,18 +43,37 @@ public class Registro extends JFrame {
 		contentPane.setLayout(null);
 		this.setResizable(false);
 		
-		JButton btnNewButton_1 = new JButton("Registrarse");
+		 JButton btnNewButton_1 = new JButton("Registrarse");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				if (!(textField.getText().isEmpty()) && !(textField_1.getText().isEmpty()) && !(passwordField.getText().isEmpty())) {
+              try {
+            	  datos.CrearUsuario(textField.getText(), textField_1.getText(), passwordField.getText());
+            	  JOptionPane.showMessageDialog(null, "Usted se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
+  				 MenuLoggin logg = new MenuLoggin(datos);
+  				 logg.setVisible(true);
+  				 Registro.this.setVisible(false);
+              } catch(IllegalArgumentException a){
+            	  JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);
+              }         	  
+              } else {
+            	  JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);
+              }
+			}
+		});
+		
 		btnNewButton_1.setBounds(185, 147, 101, 26);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Atras");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuLoggin log = new MenuLoggin();
+				MenuLoggin log = new MenuLoggin(datos);
 				log.setVisible(true);
 				Registro.this.setVisible(false);
-			}
-		});
+			}});
+		
 		btnNewButton_2.setBounds(62, 147, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
