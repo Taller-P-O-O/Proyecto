@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 
 import javax.swing.JButton;
@@ -35,28 +36,12 @@ public class RegistroPublicoGeneral extends JFrame {
 	private JTextField textField_9;
 	private JTextField textField_10;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroPublicoGeneral frame = new RegistroPublicoGeneral();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistroPublicoGeneral() {
+	public RegistroPublicoGeneral(ConexionObjetosMenus dato) {
 		setTitle("Registro de Lectores");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 546);
 		contentPane = new JPanel();
@@ -180,7 +165,7 @@ public class RegistroPublicoGeneral extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        RegistroPublicoGeneral.this.setVisible(false);
 			}

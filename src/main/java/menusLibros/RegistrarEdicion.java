@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JYearChooser;
 
+import biblioteca.ConexionObjetosMenus;
+
 public class RegistrarEdicion extends JFrame {
 
 	private JPanel contentPane;
@@ -26,28 +28,12 @@ public class RegistrarEdicion extends JFrame {
 	private JTextField textField_7;
 	private JTextField textField_8;
 	private JTextField textField_9;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistrarEdicion frame = new RegistrarEdicion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistrarEdicion() {
+	public RegistrarEdicion(ConexionObjetosMenus dato) {
 		setTitle("Registro edicion");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 536);
 		contentPane = new JPanel();

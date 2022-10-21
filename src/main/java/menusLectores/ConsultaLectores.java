@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 import menusLibros.RegistroObras;
 
@@ -24,28 +25,11 @@ public class ConsultaLectores extends JFrame {
 	private JTextField textField;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaLectores frame = new ConsultaLectores();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ConsultaLectores() {
+	public ConsultaLectores(ConexionObjetosMenus dato) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		datos = dato;
 		setBounds(100, 100, 746, 490);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -112,7 +96,7 @@ public class ConsultaLectores extends JFrame {
 		JButton btnNewButton_2 = new JButton("Atras");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        ConsultaLectores.this.setVisible(false);
 			}

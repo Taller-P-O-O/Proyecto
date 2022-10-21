@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 import menusLectores.ConsultaLectores;
 
@@ -21,29 +22,13 @@ public class ConsultaReservas extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaReservas frame = new ConsultaReservas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ConsultaReservas() {
+	public ConsultaReservas(ConexionObjetosMenus dato) {
 		setTitle("Consulta Reservas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		datos = dato;
 		setBounds(100, 100, 684, 428);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,7 +53,7 @@ public class ConsultaReservas extends JFrame {
 		JButton btnNewButton_1_2 = new JButton("Atras");
 		btnNewButton_1_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        ConsultaReservas.this.setVisible(false);
 			}

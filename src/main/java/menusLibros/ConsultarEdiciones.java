@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import biblioteca.ConexionObjetosMenus;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -16,28 +19,12 @@ public class ConsultarEdiciones extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtIngreseNombreDe;
 	private JTable table;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultarEdiciones frame = new ConsultarEdiciones();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ConsultarEdiciones() {
+	public ConsultarEdiciones(ConexionObjetosMenus dato) {
 		setTitle("Buscador de ediciones");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 695, 418);
 		contentPane = new JPanel();

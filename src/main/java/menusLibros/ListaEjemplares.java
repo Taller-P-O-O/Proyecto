@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import biblioteca.ConexionObjetosMenus;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -16,28 +19,12 @@ public class ListaEjemplares extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable table;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListaEjemplares frame = new ListaEjemplares();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ListaEjemplares() {
+	public ListaEjemplares(ConexionObjetosMenus dato) {
 		setTitle("Buscador ejemplares");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 682, 413);
 		contentPane = new JPanel();

@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 
 import javax.swing.JRadioButton;
@@ -19,28 +20,11 @@ public class LectoresConMasMultas extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LectoresConMasMultas frame = new LectoresConMasMultas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public LectoresConMasMultas() {
+	public LectoresConMasMultas(ConexionObjetosMenus dato) {
 		setTitle("Lectores con mas multas");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 744, 475);
 		contentPane = new JPanel();
@@ -53,7 +37,7 @@ public class LectoresConMasMultas extends JFrame {
 		JButton btnNewButton_2 = new JButton("Atras");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        LectoresConMasMultas.this.setVisible(false);
 			}

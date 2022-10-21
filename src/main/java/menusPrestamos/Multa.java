@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import biblioteca.ConexionObjetosMenus;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -14,28 +17,12 @@ import javax.swing.JButton;
 public class Multa extends JFrame {
 
 	private JPanel contentPane;
+	private final ConexionObjetosMenus datos;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Multa frame = new Multa();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public Multa() {
+	public Multa(ConexionObjetosMenus dato) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		datos = dato;
 		setBounds(100, 100, 316, 224);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

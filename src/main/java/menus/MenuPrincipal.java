@@ -6,11 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
 import menusLectores.ConsultaLectores;
 import menusLectores.RegistroAlumnos;
 import menusLectores.RegistroProfesores;
 import menusLectores.RegistroPublicoGeneral;
 import menusLibros.ConsultaObras;
+import menusLibros.RegistrarColeccion;
 import menusLibros.RegistroObras;
 import menusPrestamos.ConsultaMultas;
 import menusPrestamos.ConsultaPrestamos;
@@ -32,28 +34,11 @@ public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPrincipal frame = new MenuPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MenuPrincipal() {
+	public MenuPrincipal(ConexionObjetosMenus dato) {
 		setTitle("Menu Principal");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 657, 474);
 		contentPane = new JPanel();
@@ -73,7 +58,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Registrar nueva obra");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroObras RegO = new RegistroObras();
+				RegistroObras RegO = new RegistroObras(datos);
 				RegO.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -81,12 +66,19 @@ public class MenuPrincipal extends JFrame {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar coleccion");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarColeccion RegC = new RegistrarColeccion(datos);
+				RegC.setVisible(true);
+				MenuPrincipal.this.setVisible(false);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Consultar obras");
 		mntmNewMenuItem_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConsultaObras ConsultaO = new ConsultaObras();
+				ConsultaObras ConsultaO = new ConsultaObras(datos);
 				ConsultaO.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -99,7 +91,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_11 = new JMenuItem("Registrar publico general");
 		mntmNewMenuItem_11.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroPublicoGeneral RegPG = new RegistroPublicoGeneral();
+				RegistroPublicoGeneral RegPG = new RegistroPublicoGeneral(datos);
 				RegPG.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -109,7 +101,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_9 = new JMenuItem("Registar alumnos");
 		mntmNewMenuItem_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroAlumnos RegA = new RegistroAlumnos();
+				RegistroAlumnos RegA = new RegistroAlumnos(datos);
 				RegA.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -119,7 +111,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_10 = new JMenuItem("Registrar profesores");
 		mntmNewMenuItem_10.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroProfesores RegP = new RegistroProfesores();
+				RegistroProfesores RegP = new RegistroProfesores(datos);
 				RegP.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -129,7 +121,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_12 = new JMenuItem("Consultar Lectores");
 		mntmNewMenuItem_12.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConsultaLectores ConL = new ConsultaLectores();
+				ConsultaLectores ConL = new ConsultaLectores(datos);
 				ConL.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -142,7 +134,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_13 = new JMenuItem("Consultar Prestamos");
 		mntmNewMenuItem_13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConsultaPrestamos ConP = new ConsultaPrestamos();
+				ConsultaPrestamos ConP = new ConsultaPrestamos(datos);
 				ConP.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -155,7 +147,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Consultar reservas");
 		mntmNewMenuItem_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConsultaReservas ConR = new ConsultaReservas();
+				ConsultaReservas ConR = new ConsultaReservas(datos);
 				ConR.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -168,7 +160,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Consultar multas");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ConsultaMultas ConM = new ConsultaMultas();
+				ConsultaMultas ConM = new ConsultaMultas(datos);
 				ConM.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -181,7 +173,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Obras mas solicitadas");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ObrasMasSolicitadas ObrMS = new ObrasMasSolicitadas();
+				ObrasMasSolicitadas ObrMS = new ObrasMasSolicitadas(datos);
 				ObrMS.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
@@ -191,7 +183,7 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem mntmNewMenuItem_14 = new JMenuItem("Lectores con mas multas");
 		mntmNewMenuItem_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LectoresConMasMultas LecCMM = new LectoresConMasMultas();
+				LectoresConMasMultas LecCMM = new LectoresConMasMultas(datos);
 				LecCMM.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}

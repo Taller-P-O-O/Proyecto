@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 import menusLectores.ConsultaLectores;
 
@@ -25,28 +26,11 @@ public class ConsultaPrestamos extends JFrame {
 	private JTextField textField;
 	private JTable table;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+    private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaPrestamos frame = new ConsultaPrestamos();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public ConsultaPrestamos() {
+	public ConsultaPrestamos(ConexionObjetosMenus dato) {
 		setTitle("Consulta prestamos");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 678, 436);
 		contentPane = new JPanel();
@@ -76,7 +60,7 @@ public class ConsultaPrestamos extends JFrame {
 		JButton btnNewButton_1_2 = new JButton("Atras");
 		btnNewButton_1_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        ConsultaPrestamos.this.setVisible(false);
 			}

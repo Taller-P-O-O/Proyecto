@@ -13,6 +13,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import com.toedter.calendar.JDateChooser;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 import menusLectores.ConsultaLectores;
 
@@ -26,29 +27,13 @@ public class ConsultaMultas extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private final ConexionObjetosMenus datos;
 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ConsultaMultas frame = new ConsultaMultas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ConsultaMultas() {
+	public ConsultaMultas(ConexionObjetosMenus dato) {
 		setTitle("Consulta de multas");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 680, 432);
 		contentPane = new JPanel();
@@ -60,7 +45,7 @@ public class ConsultaMultas extends JFrame {
 		JButton btnNewButton_1_2 = new JButton("Atras");
 		btnNewButton_1_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        ConsultaMultas.this.setVisible(false);
 			}

@@ -6,31 +6,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
+
 public class RegistrarColeccion extends JFrame {
 
 	private JPanel contentPane;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistrarColeccion frame = new RegistrarColeccion();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistrarColeccion() {
+	public RegistrarColeccion(ConexionObjetosMenus dato) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		datos = dato;
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

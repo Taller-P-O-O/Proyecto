@@ -11,6 +11,7 @@ import javax.swing.plaf.basic.BasicLookAndFeel;
 import com.jgoodies.looks.windows.WindowsLookAndFeel;
 
 import biblioteca.ConexionObjetosMenus;
+import menus.MenuPrincipal;
 
 import javax.swing.JList;
 import javax.swing.JPasswordField;
@@ -22,6 +23,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
@@ -78,6 +80,18 @@ public class MenuLoggin extends JFrame {
 		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Iniciar sesion");
+		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
+			public void actionPerformed(ActionEvent e) {
+				if (datos.BuscarUsuario(textField.getText(), passwordField.getText()) == true) {
+					MenuPrincipal MP = new MenuPrincipal(datos);
+					MP.setVisible(true);
+					MenuLoggin.this.setVisible(false);
+				} else {
+					JOptionPane.showMessageDialog(null, "El usuario o contraseña son incorrectos o no existen", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 		btnNewButton.setBounds(84, 207, 110, 26);
 		contentPane.add(btnNewButton);
 		

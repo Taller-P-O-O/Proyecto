@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 import menusLibros.ConsultaObras;
 
@@ -23,28 +24,12 @@ public class ObrasMasSolicitadas extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ObrasMasSolicitadas frame = new ObrasMasSolicitadas();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ObrasMasSolicitadas() {
+	public ObrasMasSolicitadas(ConexionObjetosMenus dato) {
 		setTitle("Obras mas solicitadas");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 745, 470);
 		contentPane = new JPanel();
@@ -69,7 +54,7 @@ public class ObrasMasSolicitadas extends JFrame {
 		JButton btnNewButton_2 = new JButton("Atras");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        ObrasMasSolicitadas.this.setVisible(false);
 			}

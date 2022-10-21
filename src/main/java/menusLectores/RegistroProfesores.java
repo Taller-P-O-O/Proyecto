@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
 
+import biblioteca.ConexionObjetosMenus;
 import menus.MenuPrincipal;
 import menusLibros.RegistroObras;
 
@@ -37,28 +38,12 @@ public class RegistroProfesores extends JFrame {
 	private JTextField textField_10;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField textField_11;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroProfesores frame = new RegistroProfesores();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistroProfesores() {
+	public RegistroProfesores(ConexionObjetosMenus dato) {
 		setTitle("Registro de Lectores");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 389, 589);
 		contentPane = new JPanel();
@@ -191,7 +176,7 @@ public class RegistroProfesores extends JFrame {
 		JButton btnNewButton_1 = new JButton("Atras");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal();
+				MenuPrincipal MP = new MenuPrincipal(datos);
 		        MP.setVisible(true);
 		        RegistroProfesores.this.setVisible(false);
 			}

@@ -25,13 +25,6 @@ public class Registro extends JFrame {
 	private JPasswordField passwordField;
 	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-
-	/**
-	 * Create the frame.
-	 */
 	public Registro(ConexionObjetosMenus dato) {
 		setTitle("Registro");
 		datos = dato;
@@ -48,7 +41,9 @@ public class Registro extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				if (!(textField.getText().isEmpty()) && !(textField_1.getText().isEmpty()) && !(passwordField.getText().isEmpty())) {
-              try {
+              
+			  if(!(datos.ComprobarUsuario(textField.getText()))){
+				  try {
             	  datos.CrearUsuario(textField.getText(), textField_1.getText(), passwordField.getText());
             	  JOptionPane.showMessageDialog(null, "Usted se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
   				 MenuLoggin logg = new MenuLoggin(datos);
@@ -56,6 +51,8 @@ public class Registro extends JFrame {
   				 Registro.this.setVisible(false);
               } catch(IllegalArgumentException a){
             	  JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);
+              }}else {
+            	  JOptionPane.showMessageDialog(null, "Este nombre de usuario ya esta siendo utilizado", "Error", JOptionPane.ERROR_MESSAGE);
               }         	  
               } else {
             	  JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);

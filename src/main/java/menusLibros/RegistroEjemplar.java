@@ -9,6 +9,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
+
+import biblioteca.ConexionObjetosMenus;
+
 import javax.swing.JButton;
 
 public class RegistroEjemplar extends JFrame {
@@ -18,28 +21,12 @@ public class RegistroEjemplar extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private final ConexionObjetosMenus datos;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegistroEjemplar frame = new RegistroEjemplar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public RegistroEjemplar() {
+	public RegistroEjemplar(ConexionObjetosMenus dato) {
 		setTitle("Registro ejemplar");
+		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
