@@ -6,12 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import menus.MenuPrincipal;
+import menusLectores.ConsultaLectores;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ConsultaPrestamos extends JFrame {
 
@@ -47,27 +53,35 @@ public class ConsultaPrestamos extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setResizable(false);
 		
 		textField = new JTextField();
 		textField.setToolTipText("");
 		textField.setColumns(10);
-		textField.setBounds(10, 12, 608, 20);
+		textField.setBounds(10, 12, 584, 20);
 		contentPane.add(textField);
 		
-		JButton btnNewButton = new JButton("B");
-		btnNewButton.setBounds(618, 11, 39, 23);
+		JButton btnNewButton = new JButton("Buscar");
+		btnNewButton.setBounds(587, 12, 75, 20);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Registrar devolucion");
-		btnNewButton_1.setBounds(279, 363, 131, 23);
+		btnNewButton_1.setBounds(279, 363, 151, 26);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Multar");
-		btnNewButton_1_1.setBounds(432, 363, 63, 23);
+		btnNewButton_1_1.setBounds(462, 363, 70, 26);
 		contentPane.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_2 = new JButton("Atras");
-		btnNewButton_1_2.setBounds(192, 363, 59, 23);
+		btnNewButton_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPrincipal MP = new MenuPrincipal();
+		        MP.setVisible(true);
+		        ConsultaPrestamos.this.setVisible(false);
+			}
+		});
+		btnNewButton_1_2.setBounds(192, 363, 65, 26);
 		contentPane.add(btnNewButton_1_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -80,22 +94,22 @@ public class ConsultaPrestamos extends JFrame {
 		JRadioButton rdbtnNombreObra = new JRadioButton("Nombre obra");
 		buttonGroup.add(rdbtnNombreObra);
 		rdbtnNombreObra.setSelected(true);
-		rdbtnNombreObra.setBounds(50, 36, 87, 23);
+		rdbtnNombreObra.setBounds(50, 36, 99, 24);
 		contentPane.add(rdbtnNombreObra);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Nombre lector");
 		buttonGroup.add(rdbtnNewRadioButton_1);
-		rdbtnNewRadioButton_1.setBounds(186, 36, 93, 23);
+		rdbtnNewRadioButton_1.setBounds(186, 36, 106, 24);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_1_1 = new JRadioButton("DNI");
 		buttonGroup.add(rdbtnNewRadioButton_1_1);
-		rdbtnNewRadioButton_1_1.setBounds(418, 36, 43, 23);
+		rdbtnNewRadioButton_1_1.setBounds(418, 36, 44, 24);
 		contentPane.add(rdbtnNewRadioButton_1_1);
 		
 		JRadioButton rdbtnNewRadioButton_1_2 = new JRadioButton("Fuera de termino");
 		buttonGroup.add(rdbtnNewRadioButton_1_2);
-		rdbtnNewRadioButton_1_2.setBounds(511, 36, 107, 23);
+		rdbtnNewRadioButton_1_2.setBounds(511, 36, 121, 24);
 		contentPane.add(rdbtnNewRadioButton_1_2);
 		
 		JRadioButton rdbtnNewRadioButton_1_4 = new JRadioButton("ID");

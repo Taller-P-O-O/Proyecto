@@ -11,12 +11,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
+
+import menus.MenuPrincipal;
+
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegistroObras extends JFrame {
 
@@ -57,7 +62,7 @@ public class RegistroObras extends JFrame {
 		setBounds(100, 100, 389, 545);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-
+        this.setResizable(false); 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -77,15 +82,15 @@ public class RegistroObras extends JFrame {
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Tipo:");
-		lblNewLabel.setBounds(122, 27, 24, 14);
+		lblNewLabel.setBounds(122, 27, 27, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Tematica:");
-		lblNewLabel_1.setBounds(99, 63, 47, 14);
+		lblNewLabel_1.setBounds(99, 63, 56, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Titulo:");
-		lblNewLabel_2.setBounds(116, 99, 30, 14);
+		lblNewLabel_2.setBounds(116, 99, 34, 16);
 		contentPane.add(lblNewLabel_2);
 		
 		textField_3 = new JTextField();
@@ -94,7 +99,7 @@ public class RegistroObras extends JFrame {
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Subtitulo:");
-		lblNewLabel_3.setBounds(99, 135, 47, 14);
+		lblNewLabel_3.setBounds(99, 135, 53, 16);
 		contentPane.add(lblNewLabel_3);
 		
 		textField_4 = new JTextField();
@@ -103,11 +108,11 @@ public class RegistroObras extends JFrame {
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Autor Nro. 1:");
-		lblNewLabel_4.setBounds(81, 171, 65, 14);
+		lblNewLabel_4.setBounds(81, 171, 70, 16);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Autor Nro. 2:");
-		lblNewLabel_5.setBounds(77, 207, 69, 14);
+		lblNewLabel_5.setBounds(79, 206, 70, 16);
 		contentPane.add(lblNewLabel_5);
 		
 		textField_5 = new JTextField();
@@ -116,7 +121,7 @@ public class RegistroObras extends JFrame {
 		contentPane.add(textField_5);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Autor Nro. 3:");
-		lblNewLabel_3_1.setBounds(81, 249, 65, 14);
+		lblNewLabel_3_1.setBounds(81, 249, 70, 16);
 		contentPane.add(lblNewLabel_3_1);
 		
 		textField_6 = new JTextField();
@@ -125,7 +130,7 @@ public class RegistroObras extends JFrame {
 		contentPane.add(textField_6);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Genero:");
-		lblNewLabel_3_2.setBounds(107, 279, 39, 14);
+		lblNewLabel_3_2.setBounds(107, 279, 44, 16);
 		contentPane.add(lblNewLabel_3_2);
 		
 		textField_7 = new JTextField();
@@ -134,7 +139,7 @@ public class RegistroObras extends JFrame {
 		contentPane.add(textField_7);
 		
 		JLabel lblNewLabel_3_3 = new JLabel("Caracteristica:");
-		lblNewLabel_3_3.setBounds(73, 315, 73, 14);
+		lblNewLabel_3_3.setBounds(67, 314, 84, 16);
 		contentPane.add(lblNewLabel_3_3);
 		
 		textField_8 = new JTextField();
@@ -167,6 +172,13 @@ public class RegistroObras extends JFrame {
 		scrollPane.setViewportView(textArea);
 		
 		JButton btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPrincipal MP = new MenuPrincipal();
+		        MP.setVisible(true);
+		        RegistroObras.this.setVisible(false);
+			}
+		});
 		btnAtras.setBounds(90, 472, 89, 23);
 		contentPane.add(btnAtras);
 	}

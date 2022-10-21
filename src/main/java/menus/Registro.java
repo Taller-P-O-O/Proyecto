@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Registro extends JFrame {
 
@@ -45,12 +47,20 @@ public class Registro extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setResizable(false);
 		
 		JButton btnNewButton_1 = new JButton("Registrarse");
-		btnNewButton_1.setBounds(185, 147, 87, 23);
+		btnNewButton_1.setBounds(185, 147, 101, 26);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Atras");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuLoggin log = new MenuLoggin();
+				log.setVisible(true);
+				Registro.this.setVisible(false);
+			}
+		});
 		btnNewButton_2.setBounds(62, 147, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
@@ -64,16 +74,16 @@ public class Registro extends JFrame {
 		textField_1.setBounds(118, 63, 140, 25);
 		contentPane.add(textField_1);
 		
-		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(62, 32, 46, 14);
+		JLabel lblNewLabel = new JLabel("Nombre y apellido:");
+		lblNewLabel.setBounds(12, 31, 104, 16);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Apellido:");
-		lblNewLabel_1.setBounds(62, 68, 46, 14);
+		JLabel lblNewLabel_1 = new JLabel("Usuario:");
+		lblNewLabel_1.setBounds(68, 67, 48, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Contraseña:");
-		lblNewLabel_2.setBounds(48, 104, 60, 14);
+		lblNewLabel_2.setBounds(48, 104, 69, 16);
 		contentPane.add(lblNewLabel_2);
 		
 		passwordField = new JPasswordField();

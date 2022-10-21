@@ -6,11 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicLookAndFeel;
+
+import com.jgoodies.looks.windows.WindowsLookAndFeel;
+
 import javax.swing.JList;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
+import javax.swing.LookAndFeel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,6 +24,8 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
@@ -54,7 +61,9 @@ public class MenuLoggin extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		this.setResizable(false);
+
+
 		textField = new JTextField();
 		textField.setBounds(151, 144, 152, 21);
 		contentPane.add(textField);
@@ -65,7 +74,7 @@ public class MenuLoggin extends JFrame {
 		contentPane.add(passwordField);
 		
 		JButton btnNewButton = new JButton("Iniciar sesion");
-		btnNewButton.setBounds(84, 207, 95, 23);
+		btnNewButton.setBounds(84, 207, 110, 26);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Registrarse");
@@ -73,7 +82,7 @@ public class MenuLoggin extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Registro reg = new Registro();
 				reg.setVisible(true);
-
+                MenuLoggin.this.setVisible(false);
 			}
 		});
 
@@ -81,11 +90,11 @@ public class MenuLoggin extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JLabel lblNewLabel = new JLabel("Usuario:");
-		lblNewLabel.setBounds(101, 144, 40, 21);
+		lblNewLabel.setBounds(101, 144, 47, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Contraseña:");
-		lblNewLabel_1.setBounds(74, 176, 67, 20);
+		lblNewLabel_1.setBounds(81, 179, 69, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("");

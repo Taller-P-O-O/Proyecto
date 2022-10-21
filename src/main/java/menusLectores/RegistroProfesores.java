@@ -11,9 +11,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
+
+import menus.MenuPrincipal;
+import menusLibros.RegistroObras;
+
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RegistroProfesores extends JFrame {
 
@@ -57,6 +63,7 @@ public class RegistroProfesores extends JFrame {
 		setBounds(100, 100, 389, 589);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setResizable(false);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -77,15 +84,15 @@ public class RegistroProfesores extends JFrame {
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setBounds(100, 27, 46, 14);
+		lblNewLabel.setBounds(100, 27, 48, 16);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Apellido:");
-		lblNewLabel_1.setBounds(100, 63, 46, 14);
+		lblNewLabel_1.setBounds(100, 63, 48, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Tipo de Documento:");
-		lblNewLabel_2.setBounds(50, 99, 96, 14);
+		lblNewLabel_2.setBounds(36, 98, 112, 16);
 		contentPane.add(lblNewLabel_2);
 		
 		textField_3 = new JTextField();
@@ -94,7 +101,7 @@ public class RegistroProfesores extends JFrame {
 		textField_3.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Sexo:");
-		lblNewLabel_3.setBounds(118, 171, 28, 14);
+		lblNewLabel_3.setBounds(118, 171, 32, 16);
 		contentPane.add(lblNewLabel_3);
 		
 		JDateChooser dateChooser = new JDateChooser();
@@ -107,11 +114,11 @@ public class RegistroProfesores extends JFrame {
 		textField_4.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Nro. de documento:");
-		lblNewLabel_4.setBounds(50, 135, 96, 14);
+		lblNewLabel_4.setBounds(36, 134, 110, 16);
 		contentPane.add(lblNewLabel_4);
 		
 		JLabel lblNewLabel_5 = new JLabel("Fecha de nacimiento:");
-		lblNewLabel_5.setBounds(50, 213, 104, 14);
+		lblNewLabel_5.setBounds(25, 211, 120, 16);
 		contentPane.add(lblNewLabel_5);
 		
 		textField_5 = new JTextField();
@@ -120,7 +127,7 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_5);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Num. Celular:");
-		lblNewLabel_3_1.setBounds(81, 243, 65, 14);
+		lblNewLabel_3_1.setBounds(73, 242, 75, 16);
 		contentPane.add(lblNewLabel_3_1);
 		
 		textField_6 = new JTextField();
@@ -129,7 +136,7 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_6);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Nacionalidad:");
-		lblNewLabel_3_2.setBounds(81, 279, 65, 14);
+		lblNewLabel_3_2.setBounds(73, 278, 76, 16);
 		contentPane.add(lblNewLabel_3_2);
 		
 		textField_7 = new JTextField();
@@ -138,7 +145,7 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_7);
 		
 		JLabel lblNewLabel_3_3 = new JLabel("Codigo Postal:");
-		lblNewLabel_3_3.setBounds(77, 315, 69, 14);
+		lblNewLabel_3_3.setBounds(67, 314, 81, 16);
 		contentPane.add(lblNewLabel_3_3);
 		
 		textField_8 = new JTextField();
@@ -147,7 +154,7 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_8);
 		
 		JLabel lblNewLabel_3_4 = new JLabel("Domicilio:");
-		lblNewLabel_3_4.setBounds(100, 351, 46, 14);
+		lblNewLabel_3_4.setBounds(90, 350, 55, 16);
 		contentPane.add(lblNewLabel_3_4);
 		
 		textField_9 = new JTextField();
@@ -156,7 +163,7 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_9);
 		
 		JLabel lblNewLabel_3_5 = new JLabel("Departamento:");
-		lblNewLabel_3_5.setBounds(73, 387, 73, 14);
+		lblNewLabel_3_5.setBounds(64, 386, 84, 16);
 		contentPane.add(lblNewLabel_3_5);
 		
 		textField_10 = new JTextField();
@@ -165,11 +172,11 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_10);
 		
 		JLabel lblNewLabel_3_6 = new JLabel("Localidad:");
-		lblNewLabel_3_6.setBounds(98, 423, 48, 14);
+		lblNewLabel_3_6.setBounds(90, 422, 58, 16);
 		contentPane.add(lblNewLabel_3_6);
 		
 		JButton btnNewButton = new JButton("Registrar");
-		btnNewButton.setBounds(141, 516, 89, 23);
+		btnNewButton.setBounds(207, 514, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		textField_11 = new JTextField();
@@ -178,7 +185,18 @@ public class RegistroProfesores extends JFrame {
 		contentPane.add(textField_11);
 		
 		JLabel lblNewLabel_3_6_1 = new JLabel("Carreras:");
-		lblNewLabel_3_6_1.setBounds(98, 459, 48, 14);
+		lblNewLabel_3_6_1.setBounds(94, 458, 54, 16);
 		contentPane.add(lblNewLabel_3_6_1);
+		
+		JButton btnNewButton_1 = new JButton("Atras");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPrincipal MP = new MenuPrincipal();
+		        MP.setVisible(true);
+		        RegistroProfesores.this.setVisible(false);
+			}
+		});
+		btnNewButton_1.setBounds(85, 512, 65, 26);
+		contentPane.add(btnNewButton_1);
 	}
 }
