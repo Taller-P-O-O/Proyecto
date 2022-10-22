@@ -180,6 +180,6 @@ public class RegistroObras extends JFrame {
 	}
 
 	public static boolean validarTex(String nom) {
-		return nom.matches("[a-zA-Z]");
+		return nom.matches("[a-zA-Z]*");
 	}
 }

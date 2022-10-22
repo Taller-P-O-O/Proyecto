@@ -51,32 +51,32 @@ public class ConsultaObras extends JFrame {
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Titulo");
 		rdbtnNewRadioButton.setSelected(true);
 		buttonGroup.add(rdbtnNewRadioButton);
-		rdbtnNewRadioButton.setBounds(20, 38, 56, 24);
+		rdbtnNewRadioButton.setBounds(20, 36, 56, 24);
 		contentPane.add(rdbtnNewRadioButton);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Autor");
 		buttonGroup.add(rdbtnNewRadioButton_1);
-		rdbtnNewRadioButton_1.setBounds(129, 38, 56, 24);
+		rdbtnNewRadioButton_1.setBounds(97, 36, 56, 24);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_1_1 = new JRadioButton("ISBN");
 		buttonGroup.add(rdbtnNewRadioButton_1_1);
-		rdbtnNewRadioButton_1_1.setBounds(364, 38, 52, 24);
+		rdbtnNewRadioButton_1_1.setBounds(251, 36, 52, 24);
 		contentPane.add(rdbtnNewRadioButton_1_1);
 		
 		JRadioButton rdbtnNewRadioButton_1_2 = new JRadioButton("Indice");
 		buttonGroup.add(rdbtnNewRadioButton_1_2);
-		rdbtnNewRadioButton_1_2.setBounds(490, 38, 59, 24);
+		rdbtnNewRadioButton_1_2.setBounds(317, 36, 59, 24);
 		contentPane.add(rdbtnNewRadioButton_1_2);
 		
 		JRadioButton rdbtnNewRadioButton_1_3 = new JRadioButton("Tematica");
 		buttonGroup.add(rdbtnNewRadioButton_1_3);
-		rdbtnNewRadioButton_1_3.setBounds(628, 38, 78, 24);
+		rdbtnNewRadioButton_1_3.setBounds(380, 36, 78, 24);
 		contentPane.add(rdbtnNewRadioButton_1_3);
 		
 		JRadioButton rdbtnNewRadioButton_1_4 = new JRadioButton("Genero");
 		buttonGroup.add(rdbtnNewRadioButton_1_4);
-		rdbtnNewRadioButton_1_4.setBounds(232, 38, 66, 24);
+		rdbtnNewRadioButton_1_4.setBounds(170, 36, 66, 24);
 		contentPane.add(rdbtnNewRadioButton_1_4);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -108,5 +108,15 @@ public class ConsultaObras extends JFrame {
 		});
 		btnNewButton_2.setBounds(93, 422, 89, 23);
 		contentPane.add(btnNewButton_2);
+		
+		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("Nombre coleccion");
+		buttonGroup.add(rdbtnNewRadioButton_2);
+		rdbtnNewRadioButton_2.setBounds(474, 36, 128, 24);
+		contentPane.add(rdbtnNewRadioButton_2);
+		
+		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("ISBN coleccion");
+		buttonGroup.add(rdbtnNewRadioButton_3);
+		rdbtnNewRadioButton_3.setBounds(606, 36, 110, 24);
+		contentPane.add(rdbtnNewRadioButton_3);
 	}
 }

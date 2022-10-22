@@ -101,6 +101,6 @@ public class Registro extends JFrame {
 	}
     
 	public static boolean validaNom(String nom) {
-		return nom.matches("[a-zA-Z]");
+		return nom.matches("[a-zA-Z]*");
 	}
 }

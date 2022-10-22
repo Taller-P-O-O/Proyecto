@@ -1,6 +1,7 @@
 package biblioteca;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 abstract class Lector {
@@ -21,6 +22,28 @@ abstract class Lector {
 	private List<Prestamo> ejemplaresPrestado;
 	private List<Reserva> ejemplaresReservado;
 	
+	
+	
+	public Lector(String nombre, String apellido, String tipo, int dni, String sexo, String correo, LocalDate fechaNac,
+			int numCel, String nacionalidad, int codigoPostal, String domicilio, String departamento, String localidad) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.tipo = tipo;
+		this.dni = dni;
+		this.sexo = sexo;
+		this.correo = correo;
+		this.fechaNac = fechaNac;
+		this.numCel = numCel;
+		this.nacionalidad = nacionalidad;
+		this.codigoPostal = codigoPostal;
+		this.domicilio = domicilio;
+		this.departamento = departamento;
+		this.localidad = localidad;
+		this.ejemplaresPrestado = new ArrayList();
+		this.ejemplaresReservado = new ArrayList();
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
