@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Lector {
+public abstract class Lector {
 
 	private String nombre;
 	private String apellido;

@@ -29,6 +29,15 @@ public class ConexionObjetosMenus {
 		Lectores.add(new Alumno(nombre, apellido, tipo, dni, sexo, correo, fechaNac, numCel, nacionalidad, codigoPostal, domicilio, departamento, localidad));
 	}	
 	
+	public List<Obra> getObras() {
+		return Obras;
+	}
+
+	
+	public List<Lector> getLectores() {
+		return Lectores;
+	}
+
 	public void CrearProfesor(String nombre, String apellido, String tipo, int dni, String sexo, String correo, LocalDate fechaNac, int numCel, String nacionalidad, int codigoPostal, String domicilio, String departamento, String localidad, String carreras) {
 		Lectores.add(new Profesor(nombre, apellido, tipo, dni, sexo, correo, fechaNac, numCel, nacionalidad, codigoPostal, domicilio, departamento, localidad, carreras));
 	}

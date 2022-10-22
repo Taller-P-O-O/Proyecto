@@ -5,8 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
+import biblioteca.Coleccion;
 import biblioteca.ConexionObjetosMenus;
+import biblioteca.Lector;
+import biblioteca.Obra;
+import biblioteca.Profesor;
 import menus.MenuPrincipal;
 
 import javax.swing.JTextField;
@@ -16,6 +21,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ConsultaObras extends JFrame {
@@ -25,6 +31,7 @@ public class ConsultaObras extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTable table;
 	private final ConexionObjetosMenus datos;
+	private DefaultTableModel model;
 
 
 	public ConsultaObras(ConexionObjetosMenus dato) {
@@ -83,8 +90,7 @@ public class ConsultaObras extends JFrame {
 		scrollPane.setBounds(10, 68, 706, 343);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+
 		
 		JButton btnNewButton_1 = new JButton("Registrar edicion");
 		btnNewButton_1.setBounds(384, 422, 131, 26);
@@ -118,5 +124,54 @@ public class ConsultaObras extends JFrame {
 		buttonGroup.add(rdbtnNewRadioButton_3);
 		rdbtnNewRadioButton_3.setBounds(606, 36, 110, 24);
 		contentPane.add(rdbtnNewRadioButton_3);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		model = new DefaultTableModel();
+	    table.setModel(model);
+		
+		model.addColumn("Clase");
+		model.addColumn("Tipo");
+		model.addColumn("Tematica");
+		model.addColumn("Titulo");
+		model.addColumn("Subtitulo");
+		model.addColumn("Autor N1");
+		model.addColumn("Autor N2");
+		model.addColumn("Autor N3");
+		model.addColumn("Genero");
+		model.addColumn("ISBN");
+		model.addColumn("Nombre coleccion");
+        model.addColumn("ISBN coleccion");
+
+        table.getTableHeader().setReorderingAllowed(false); 
+        llenarTabla();
 	}
+	public void llenarTabla() {
+		List<Obra> listaObras = datos.getObras();
+		
+		for(Obra obra : listaObras) {
+			Object[] fila = new Object[12];
+			
+			fila[0] = obra.getClass().getSimpleName();
+			fila[1] = obra.getTipo();
+			fila[2] = obra.getTematica();
+			fila[3] = obra.getTitulo();
+			fila[4] = obra.getSubtitulo();
+			fila[5] = obra.getAutor1();
+			fila[6] = obra.getAutor2();
+			fila[7] = obra.getAutor3();
+			fila[8] = obra.getGenero();
+			fila[9] = obra.getISBN();
+			
+			if (obra instanceof Coleccion) {
+	        fila[10] = ((Coleccion) obra).getNombreColec();
+	        fila[11] = ((Coleccion) obra).getISBNColec();
+           } else {
+   	         fila[10] = "";
+   	         fila[11] = "";
+              }
+			model.addRow(fila);
+		  }
+	 }
 }
