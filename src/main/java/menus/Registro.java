@@ -41,8 +41,7 @@ public class Registro extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				if (!(textField.getText().isEmpty()) && !(textField_1.getText().isEmpty()) && !(passwordField.getText().isEmpty())) {
-              
-			  if(!(datos.ComprobarUsuario(textField.getText()))){
+			  if(!(datos.ComprobarUsuario(textField_1.getText()))){
 				  try {
             	  datos.CrearUsuario(textField.getText(), textField_1.getText(), passwordField.getText());
             	  JOptionPane.showMessageDialog(null, "Usted se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);

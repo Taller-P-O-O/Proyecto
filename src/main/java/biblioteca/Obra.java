@@ -1,5 +1,6 @@
 package biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Obra {
@@ -16,10 +17,31 @@ public class Obra {
 	private String ISBN;
 	private int solicitudGeneral;
 	private int solicitudProfYAlum;
-	private String[] indice;
+	private String indice;
     private List<Edicion> ediciones;
     private List<Ejemplar> ejemplares;
     
+    
+	public Obra(String tipo, String tematica, String titulo, String subtitulo, String autor1, String autor2,
+			String autor3, String genero, String caracteristica, String iSBN, String indice) {
+		super();
+		this.tipo = tipo;
+		this.tematica = tematica;
+		this.titulo = titulo;
+		this.subtitulo = subtitulo;
+		this.autor1 = autor1;
+		this.autor2 = autor2;
+		this.autor3 = autor3;
+		this.genero = genero;
+		this.caracteristica = caracteristica;
+		ISBN = iSBN;
+		this.indice = indice;
+		this.solicitudGeneral = 0;
+		this.solicitudProfYAlum = 0;
+		this.ediciones = new ArrayList();
+		this.ejemplares = new ArrayList();
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -92,10 +114,10 @@ public class Obra {
 	public void setSolicitudProfYAlum(int solicitudProfYAlum) {
 		this.solicitudProfYAlum = solicitudProfYAlum;
 	}
-	public String[] getIndice() {
+	public String getIndice() {
 		return indice;
 	}
-	public void setIndice(String[] indice) {
+	public void setIndice(String indice) {
 		this.indice = indice;
 	}
 	public List<Edicion> getEdiciones() {
