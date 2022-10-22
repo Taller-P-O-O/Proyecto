@@ -40,10 +40,10 @@ public class Registro extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				if (!(textField.getText().isEmpty()) && !(textField_1.getText().isEmpty()) && !(passwordField.getText().isEmpty())) {
-			  if(!(datos.ComprobarUsuario(textField_1.getText()))){
+				if (!(textField.getText().trim().isEmpty()) && !(textField_1.getText().trim().isEmpty()) && !(passwordField.getText().trim().isEmpty()) && validaNom(textField.getText().trim())) {
+			  if(!(datos.ComprobarUsuario(textField_1.getText().trim()))){
 				  try {
-            	  datos.CrearUsuario(textField.getText(), textField_1.getText(), passwordField.getText());
+            	  datos.CrearUsuario(textField.getText().trim(), textField_1.getText().trim(), passwordField.getText().trim());
             	  JOptionPane.showMessageDialog(null, "Usted se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
   				 MenuLoggin logg = new MenuLoggin(datos);
   				 logg.setVisible(true);
@@ -98,5 +98,9 @@ public class Registro extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(118, 100, 140, 23);
 		contentPane.add(passwordField);
+	}
+    
+	public static boolean validaNom(String nom) {
+		return nom.matches("[a-zA-Z]");
 	}
 }

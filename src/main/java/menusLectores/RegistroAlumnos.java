@@ -36,7 +36,6 @@ public class RegistroAlumnos extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ConexionObjetosMenus datos;
 
 	public RegistroAlumnos(ConexionObjetosMenus dato) {
@@ -61,7 +60,7 @@ public class RegistroAlumnos extends JFrame {
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(156, 130, 140, 25);
+		textField_2.setBounds(156, 95, 140, 25);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -78,7 +77,7 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(156, 166, 140, 25);
+		textField_3.setBounds(156, 132, 140, 25);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -86,12 +85,14 @@ public class RegistroAlumnos extends JFrame {
 		lblNewLabel_3.setBounds(118, 171, 32, 16);
 		contentPane.add(lblNewLabel_3);
 		
-		JDateChooser dateChooser = new JDateChooser();
+		final JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(156, 202, 140, 25);
+		dateChooser.getDateEditor().setEnabled(false);
 		contentPane.add(dateChooser);
 		
+		
 		textField_4 = new JTextField();
-		textField_4.setBounds(156, 94, 140, 25);
+		textField_4.setBounds(156, 167, 140, 25);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
@@ -109,7 +110,7 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(textField_5);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("Num. Celular:");
-		lblNewLabel_3_1.setBounds(81, 243, 75, 16);
+		lblNewLabel_3_1.setBounds(72, 242, 75, 16);
 		contentPane.add(lblNewLabel_3_1);
 		
 		textField_6 = new JTextField();
@@ -118,7 +119,7 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(textField_6);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Nacionalidad:");
-		lblNewLabel_3_2.setBounds(81, 279, 76, 16);
+		lblNewLabel_3_2.setBounds(72, 278, 76, 16);
 		contentPane.add(lblNewLabel_3_2);
 		
 		textField_7 = new JTextField();
@@ -127,7 +128,7 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(textField_7);
 		
 		JLabel lblNewLabel_3_3 = new JLabel("Codigo Postal:");
-		lblNewLabel_3_3.setBounds(77, 315, 81, 16);
+		lblNewLabel_3_3.setBounds(67, 314, 81, 16);
 		contentPane.add(lblNewLabel_3_3);
 		
 		textField_8 = new JTextField();
@@ -136,7 +137,7 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(textField_8);
 		
 		JLabel lblNewLabel_3_4 = new JLabel("Domicilio:");
-		lblNewLabel_3_4.setBounds(100, 351, 55, 16);
+		lblNewLabel_3_4.setBounds(93, 350, 55, 16);
 		contentPane.add(lblNewLabel_3_4);
 		
 		textField_9 = new JTextField();
@@ -145,7 +146,7 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(textField_9);
 		
 		JLabel lblNewLabel_3_5 = new JLabel("Departamento:");
-		lblNewLabel_3_5.setBounds(73, 387, 84, 16);
+		lblNewLabel_3_5.setBounds(67, 386, 84, 16);
 		contentPane.add(lblNewLabel_3_5);
 		
 		textField_10 = new JTextField();
@@ -154,10 +155,18 @@ public class RegistroAlumnos extends JFrame {
 		contentPane.add(textField_10);
 		
 		JLabel lblNewLabel_3_6 = new JLabel("Localidad:");
-		lblNewLabel_3_6.setBounds(98, 423, 58, 16);
+		lblNewLabel_3_6.setBounds(93, 422, 58, 16);
 		contentPane.add(lblNewLabel_3_6);
 		
 		JButton btnNewButton = new JButton("Registrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(!(textField.getText().trim().isEmpty()) && !(textField_1.getText().trim().isEmpty()) && !(textField_2.getText().trim().isEmpty()) && !(textField_3.getText().trim().isEmpty()) && !(textField_4.getText().trim().isEmpty()) &&  !(dateChooser.getDate() == null) &&  !(textField_5.getText().trim().isEmpty()) && !(textField_6.getText().trim().isEmpty()) && !(textField_7.getText().trim().isEmpty()) && !(textField_8.getText().trim().isEmpty()) && !(textField_9.getText().trim().isEmpty()) && !(textField_10.getText().trim().isEmpty()) 
+						&& validarTex(textField.getText().trim()) && validarTex(textField_1.getText().trim()) && validarNum(textField_3.getText().trim()) && validarTex(textField_4.getText().trim()) && validarNum(textField_5.getText().trim()) && validarTex(textField_6.getText().trim()) && validarNum(textField_7.getText().trim()) && validarTex(textField_9.getText().trim()) && validarTex(textField_10.getText().trim())) {
+					
+				}
+			}
+		});
 		btnNewButton.setBounds(207, 471, 89, 23);
 		contentPane.add(btnNewButton);
 		
@@ -172,4 +181,13 @@ public class RegistroAlumnos extends JFrame {
 		btnNewButton_1.setBounds(100, 469, 65, 26);
 		contentPane.add(btnNewButton_1);
 	}
+
+	public static boolean validarTex(String nom) {
+		return nom.matches("[a-zA-Z]");
+	}
+
+	public static boolean validarNum(String nom) {
+		return nom.matches("[0-9]");
+	}
+	
 }

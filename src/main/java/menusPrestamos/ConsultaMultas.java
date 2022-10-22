@@ -66,10 +66,12 @@ public class ConsultaMultas extends JFrame {
 		
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(250, 334, 89, 20);
+		dateChooser.getDateEditor().setEnabled(false);
 		contentPane.add(dateChooser);
 		
 		JDateChooser dateChooser_1 = new JDateChooser();
 		dateChooser_1.setBounds(421, 334, 92, 20);
+		dateChooser_1.getDateEditor().setEnabled(false);
 		contentPane.add(dateChooser_1);
 		
 		JButton btnNewButton = new JButton("Buscar");

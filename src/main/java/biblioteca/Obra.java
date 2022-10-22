@@ -13,7 +13,6 @@ public class Obra {
 	private String autor2;
 	private String autor3;
 	private String genero;
-	private String caracteristica;
 	private String ISBN;
 	private int solicitudGeneral;
 	private int solicitudProfYAlum;
@@ -23,7 +22,7 @@ public class Obra {
     
     
 	public Obra(String tipo, String tematica, String titulo, String subtitulo, String autor1, String autor2,
-			String autor3, String genero, String caracteristica, String iSBN, String indice) {
+			String autor3, String genero, String iSBN, String indice) {
 		super();
 		this.tipo = tipo;
 		this.tematica = tematica;
@@ -33,7 +32,6 @@ public class Obra {
 		this.autor2 = autor2;
 		this.autor3 = autor3;
 		this.genero = genero;
-		this.caracteristica = caracteristica;
 		ISBN = iSBN;
 		this.indice = indice;
 		this.solicitudGeneral = 0;
@@ -90,12 +88,7 @@ public class Obra {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	public String getCaracteristica() {
-		return caracteristica;
-	}
-	public void setCaracteristica(String caracteristica) {
-		this.caracteristica = caracteristica;
-	}
+
 	public String getISBN() {
 		return ISBN;
 	}

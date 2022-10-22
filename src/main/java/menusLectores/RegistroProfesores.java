@@ -91,6 +91,7 @@ public class RegistroProfesores extends JFrame {
 		
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(156, 202, 140, 25);
+		dateChooser.getDateEditor().setEnabled(false);
 		contentPane.add(dateChooser);
 		
 		textField_4 = new JTextField();

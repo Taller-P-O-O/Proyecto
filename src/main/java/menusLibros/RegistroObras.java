@@ -36,7 +36,6 @@ public class RegistroObras extends JFrame {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-	private JTextField textField_8;
 	private JTextField textField_10;
 	private final ConexionObjetosMenus datos;
 
@@ -44,7 +43,7 @@ public class RegistroObras extends JFrame {
 		setTitle("Registro de Obras");
 		datos = dato;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 389, 545);
+		setBounds(100, 100, 389, 524);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         this.setResizable(false); 
@@ -67,11 +66,11 @@ public class RegistroObras extends JFrame {
 		textField_2.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Tipo:");
-		lblNewLabel.setBounds(128, 26, 27, 16);
+		lblNewLabel.setBounds(123, 26, 27, 16);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Tematica:");
-		lblNewLabel_1.setBounds(99, 63, 56, 16);
+		JLabel lblNewLabel_1 = new JLabel("Area tematica:");
+		lblNewLabel_1.setBounds(67, 62, 83, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Titulo:");
@@ -115,7 +114,7 @@ public class RegistroObras extends JFrame {
 		contentPane.add(textField_6);
 		
 		JLabel lblNewLabel_3_2 = new JLabel("Genero:");
-		lblNewLabel_3_2.setBounds(107, 279, 44, 16);
+		lblNewLabel_3_2.setBounds(99, 284, 44, 16);
 		contentPane.add(lblNewLabel_3_2);
 		
 		textField_7 = new JTextField();
@@ -123,24 +122,16 @@ public class RegistroObras extends JFrame {
 		textField_7.setBounds(156, 280, 140, 25);
 		contentPane.add(textField_7);
 		
-		JLabel lblNewLabel_3_3 = new JLabel("Caracteristica:");
-		lblNewLabel_3_3.setBounds(67, 314, 84, 16);
-		contentPane.add(lblNewLabel_3_3);
-		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(156, 310, 140, 25);
-		contentPane.add(textField_8);
-		
 		JLabel lblNewLabel_3_4 = new JLabel("ISBN:");
-		lblNewLabel_3_4.setBounds(116, 351, 30, 14);
+		lblNewLabel_3_4.setBounds(120, 322, 30, 14);
 		contentPane.add(lblNewLabel_3_4);
 		
 		JLabel lblNewLabel_3_5 = new JLabel("Indice:");
-		lblNewLabel_3_5.setBounds(107, 387, 39, 14);
+		lblNewLabel_3_5.setBounds(111, 348, 39, 14);
 		contentPane.add(lblNewLabel_3_5);
+				
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(156, 382, 140, 79);
+		scrollPane.setBounds(156, 347, 137, 76);
 		contentPane.add(scrollPane);
 		
 		final JTextArea textArea = new JTextArea();
@@ -149,10 +140,10 @@ public class RegistroObras extends JFrame {
 		JButton btnNewButton = new JButton("Registrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (!(textField.getText().isEmpty()) && !(textField_1.getText().isEmpty()) && !(textField_2.getText().isEmpty()) && !(textField_3.getText().isEmpty()) && !(textField_4.getText().isEmpty()) &&  !(textField_7.getText().isEmpty()) && !(textField_8.getText().isEmpty()) && !(textField_10.getText().isEmpty()) && !(textArea.getText().isEmpty())) {
-				if(!(datos.ComprobarObra(textField_10.getText()))) {
+				if (!(textField.getText().trim().isEmpty()) && !(textField_1.getText().trim().isEmpty()) && !(textField_2.getText().trim().isEmpty()) && !(textField_3.getText().trim().isEmpty()) && !(textField_4.getText().trim().isEmpty()) &&  !(textField_7.getText().trim().isEmpty()) &&  !(textField_10.getText().trim().isEmpty()) && !(textArea.getText().trim().isEmpty()) && validarTex(textField.getText().trim()) && validarTex(textField_4.getText().trim()) && validarTex(textField_5.getText().trim()) && validarTex(textField_6.getText().trim())) {
+				if(!(datos.ComprobarObra(textField_10.getText().trim()))) {
                    try { 
-                	   datos.CrearObra(textField.getText(), textField_1.getText(), textField_2.getText(), textField_3.getText(), textField_4.getText(), textField_5.getText(), textField_6.getText(), textField_7.getText(), textField_8.getText(), textField_10.getText(), textArea.getText());
+                	   datos.CrearObra(textField.getText().trim(), textField_1.getText().trim(), textField_2.getText().trim(), textField_3.getText().trim(), textField_4.getText().trim(), textField_5.getText().trim(), textField_6.getText().trim(), textField_7.getText().trim(),  textField_10.getText().trim(), textArea.getText());
                    	   JOptionPane.showMessageDialog(null, "La obra se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
                    } catch(IllegalArgumentException a) {
                 		  JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);
@@ -165,12 +156,12 @@ public class RegistroObras extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(207, 472, 89, 23);
+		btnNewButton.setBounds(207, 445, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		textField_10 = new JTextField();
 		textField_10.setColumns(10);
-		textField_10.setBounds(156, 346, 140, 25);
+		textField_10.setBounds(156, 317, 140, 25);
 		contentPane.add(textField_10);
 		
 
@@ -183,7 +174,12 @@ public class RegistroObras extends JFrame {
 		        RegistroObras.this.setVisible(false);
 			}
 		});
-		btnAtras.setBounds(90, 472, 89, 23);
+		btnAtras.setBounds(90, 445, 89, 23);
 		contentPane.add(btnAtras);
+
+	}
+
+	public static boolean validarTex(String nom) {
+		return nom.matches("[a-zA-Z]");
 	}
 }

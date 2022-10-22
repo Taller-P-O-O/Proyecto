@@ -19,9 +19,10 @@ public class ConexionObjetosMenus {
 
 	}
 	
-	public void CrearObra(String tip, String tema, String tit, String subt, String au1, String au2, String au3, String gen, String carac, String iSBN, String indi) {
-		Obras.add(new Obra(tip, tema, tit, subt, au1, au2, au3, gen, carac, iSBN, indi));
+	public void CrearObra(String tip, String tema, String tit, String subt, String au1, String au2, String au3, String gen, String iSBN, String indi) {
+		Obras.add(new Obra(tip, tema, tit, subt, au1, au2, au3, gen,  iSBN, indi));
 	}
+	
 	
 	
 	public boolean ComprobarUsuario(String Nom) {

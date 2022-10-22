@@ -35,7 +35,6 @@ public class RegistroPublicoGeneral extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private final ConexionObjetosMenus datos;
 
 
@@ -89,6 +88,7 @@ public class RegistroPublicoGeneral extends JFrame {
 		
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setBounds(156, 202, 140, 25);
+		dateChooser.getDateEditor().setEnabled(false);
 		contentPane.add(dateChooser);
 		
 		textField_4 = new JTextField();
