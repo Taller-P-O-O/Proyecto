@@ -87,18 +87,6 @@ public class ConsultaLectores extends JFrame {
 		rdbtnNewRadioButton_1_4.setBounds(445, 39, 44, 24);
 		contentPane.add(rdbtnNewRadioButton_1_4);
 		
-		JButton btnNewButton_1 = new JButton("Registrar edicion");
-		btnNewButton_1.setBounds(559, 574, 131, 26);
-		contentPane.add(btnNewButton_1);
-		
-		JButton btnNewButton_1_2 = new JButton("Listado de ediciones");
-		btnNewButton_1_2.setBounds(368, 574, 151, 26);
-		contentPane.add(btnNewButton_1_2);
-		
-		JButton btnNewButton_1_3 = new JButton("Ver indice");
-		btnNewButton_1_3.setBounds(713, 574, 91, 26);
-		contentPane.add(btnNewButton_1_3);
-		
 		JButton btnNewButton_2 = new JButton("Atras");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -107,7 +95,7 @@ public class ConsultaLectores extends JFrame {
 		        ConsultaLectores.this.setVisible(false);
 			}
 		});
-		btnNewButton_2.setBounds(254, 576, 89, 23);
+		btnNewButton_2.setBounds(270, 576, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -121,6 +109,14 @@ public class ConsultaLectores extends JFrame {
 		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
 
 	    table.setModel(model);
+	    
+	    JButton btnNewButton_1 = new JButton("Multas");
+	    btnNewButton_1.setBounds(481, 574, 98, 26);
+	    contentPane.add(btnNewButton_1);
+	    
+	    JButton btnNewButton_3 = new JButton("Prestamos");
+	    btnNewButton_3.setBounds(702, 574, 98, 26);
+	    contentPane.add(btnNewButton_3);
 		
 		model.addColumn("Tipo");
 		model.addColumn("Nombre");

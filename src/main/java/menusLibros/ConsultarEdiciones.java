@@ -44,6 +44,7 @@ public class ConsultarEdiciones extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		this.setResizable(false);
 		
 		txtIngreseNombreDe = new JTextField();
 		txtIngreseNombreDe.setToolTipText("");
@@ -60,10 +61,61 @@ public class ConsultarEdiciones extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JButton btnNewButton_1 = new JButton("Listado ejemplares");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+				        	 
+				        	 String isbn = libro.getISBN();
+				        	 String edit = (String) table.getValueAt(fila, 1);
+				        	 String PaEd = (String) table.getValueAt(fila, 2);
+				        	 Integer NumEd = (Integer) table.getValueAt(fila, 3);
+				        	 Integer ani = (Integer) table.getValueAt(fila, 4);
+				        	 Integer Vol = (Integer) table.getValueAt(fila, 5);
+				        	 String idi = (String) table.getValueAt(fila, 7);
+				        	 String form = (String) table.getValueAt(fila, 8);
+				        	 
+				        	 ListaEjemplares ListEjem = new ListaEjemplares(datos, libro,datos.BuscarEdicion(isbn, edit, PaEd, NumEd, ani, Vol, idi, form) );
+				        	 ListEjem.setVisible(true);
+				        	 ConsultarEdiciones.this.setVisible(false);
+				         }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+		});
 		btnNewButton_1.setBounds(261, 515, 143, 26);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Registrar ejemplar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+				        	 String isbn = libro.getISBN();
+				        	 String edit = (String) table.getValueAt(fila, 1);
+				        	 String PaEd = (String) table.getValueAt(fila, 2);
+				        	 Integer NumEd = (Integer) table.getValueAt(fila, 3);
+				        	 Integer ani = (Integer) table.getValueAt(fila, 4);
+				        	 Integer Vol = (Integer) table.getValueAt(fila, 5);
+				        	 String idi = (String) table.getValueAt(fila, 7);
+				        	 String form = (String) table.getValueAt(fila, 8);
+				        	 
+				        	 RegistroEjemplar RegEjem = new RegistroEjemplar(datos, libro, datos.BuscarEdicion(isbn, edit, PaEd, NumEd, ani, Vol, idi, form));
+				        	 RegEjem.setVisible(true);
+				        	 ConsultarEdiciones.this.setVisible(false);
+				         }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+		});
 		btnNewButton_1_1.setBounds(457, 515, 140, 26);
 		contentPane.add(btnNewButton_1_1);
 		
@@ -97,13 +149,13 @@ public class ConsultarEdiciones extends JFrame {
 				        	 String isbn = libro.getISBN();
 				        	 String edit = (String) table.getValueAt(fila, 1);
 				        	 String PaEd = (String) table.getValueAt(fila, 2);
-				        	 String NumEd = (String) table.getValueAt(fila, 3);
-				        	 String ani = (String) table.getValueAt(fila, 4);
-				        	 String Vol = (String) table.getValueAt(fila, 5);
+				        	 Integer NumEd = (Integer) table.getValueAt(fila, 3);
+				        	 Integer ani = (Integer) table.getValueAt(fila, 4);
+				        	 Integer Vol = (Integer) table.getValueAt(fila, 5);
 				        	 String idi = (String) table.getValueAt(fila, 7);
 				        	 String form = (String) table.getValueAt(fila, 8);
 				        	 
-				        	 JOptionPane.showMessageDialog(null, datos.BuscarEdicion(isbn, edit, PaEd, Integer.parseInt(NumEd), Integer.parseInt(ani), Integer.parseInt(Vol), idi, form).getObservacionesGen());
+				        	 JOptionPane.showMessageDialog(null, datos.BuscarEdicion(isbn, edit, PaEd, NumEd, ani, Vol, idi, form).getObservacionesGen());
 				         }
 				 }catch(HeadlessException a){
 					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);

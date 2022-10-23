@@ -14,9 +14,24 @@ public class Ejemplar {
 	private String motivoBaja;
 	private String ubicacionBaja;
 	private Obra obra;
+	private Edicion edicion;
 	private Reserva reservante;
 	private Prestamo prestatario;
 	
+	
+	
+	public Ejemplar(int codigoBarras, String posicionBiblio, int iDUnica, LocalDate fechaAdqui, String formaAdqui,
+			Obra obra, Edicion edicion) {
+		super();
+		this.codigoBarras = codigoBarras;
+		this.posicionBiblio = posicionBiblio;
+		IDUnica = iDUnica;
+		this.fechaAdqui = fechaAdqui;
+		this.formaAdqui = formaAdqui;
+		this.obra = obra;
+		this.edicion = edicion;
+	}
+
 	public int getCodigoBarras() {
 		return codigoBarras;
 	}
@@ -115,6 +130,14 @@ public class Ejemplar {
 	
 	public void aumentarSolicitud() {
 		
+	}
+
+	public Edicion getEdicion() {
+		return edicion;
+	}
+
+	public void setEdicion(Edicion edicion) {
+		this.edicion = edicion;
 	}
 	
 	

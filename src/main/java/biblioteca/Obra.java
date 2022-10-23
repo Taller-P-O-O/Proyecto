@@ -1,5 +1,6 @@
 package biblioteca;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,5 +139,8 @@ public class Obra {
 			String formato, String observacionesGen) {
     	ediciones.add(new Edicion(editorial, paisEdicion, numEdicion, anio, volumen, cantidadPaginas, idioma, formato, observacionesGen, this));
     }
-		
+    
+    public void agregarEjemplar(int codigoBarras, String posicionBiblio, int iDUnica, LocalDate fechaAdqui, String formaAdqui, Edicion edicion) {
+    	ejemplares.add(new Ejemplar(codigoBarras, posicionBiblio, iDUnica, fechaAdqui, formaAdqui, this,  edicion));
+    }		
 }

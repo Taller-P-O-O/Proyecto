@@ -155,16 +155,13 @@ public class RegistrarEdicion extends JFrame {
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				MenuPrincipal MP = new MenuPrincipal(datos);
-		        MP.setVisible(true);
+				ConsultaObras ConOb = new ConsultaObras(datos);
+		        ConOb.setVisible(true);
 		        RegistrarEdicion.this.setVisible(false);
 			}
 		});
 		btnAtras.setBounds(123, 386, 89, 23);
 		contentPane.add(btnAtras);
-		
-
-
 	}
 	
 	public static boolean validarTex(String nom) {

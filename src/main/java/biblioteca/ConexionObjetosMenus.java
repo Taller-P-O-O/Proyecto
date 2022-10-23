@@ -50,6 +50,7 @@ public class ConexionObjetosMenus {
 		Obras.add(new Coleccion(tipo, tematica, titulo, subtitulo, autor1, autor2, autor3, genero, iSBN, indice,Ncolec, ISBNColec));		
 	}
 	
+	
 	public boolean ComprobarUsuario(String Nom) {
 		boolean a = false;
 		for(int indice = 0; indice < Usuarios.size() ;indice++)
@@ -66,6 +67,17 @@ public class ConexionObjetosMenus {
 		for(int indice = 0; indice < obra.getEdiciones().size() ;indice++)
 		{
 	     if (obra.getEdiciones().get(indice).getEditorial().equals(editorial) && obra.getEdiciones().get(indice).getPaisEdicion().equals(paisEdicion) && (obra.getEdiciones().get(indice).getNumEdicion() == numEdicion) && (obra.getEdiciones().get(indice).getAnio() == anio) && (obra.getEdiciones().get(indice).getVolumen() == volumen) && obra.getEdiciones().get(indice).getIdioma().equals(idioma) && obra.getEdiciones().get(indice).getFormato().equals(formato)) {
+	        	  a = true;
+	     } 
+		}
+	    return a;
+	}
+	
+	public boolean comprobarEjemplar(Obra obra, int Id) {
+		boolean a = false;
+		for(int indice = 0; indice < obra.getEjemplares().size() ;indice++)
+		{
+	     if ((obra.getEjemplares().get(indice).getIDUnica() == Id)) {
 	        	  a = true;
 	     } 
 		}
