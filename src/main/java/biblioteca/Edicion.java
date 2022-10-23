@@ -21,10 +21,10 @@ public class Edicion {
 		this.numEdicion = numEdicion;
 		this.anio = anio;
 		this.volumen = volumen;
-		this.cantidadPaginas = cantidadPaginas;
+		this.setCantidadPaginas(cantidadPaginas);
 		this.idioma = idioma;
 		this.formato = formato;
-		ObservacionesGen = observacionesGen;
+		this.ObservacionesGen = observacionesGen;
 		this.obra = obra;
 	}
 
@@ -98,6 +98,14 @@ public class Edicion {
 	
 	public void setObra(Obra obra) {
 		this.obra = obra;
+	}
+
+	public int getCantidadPaginas() {
+		return cantidadPaginas;
+	}
+
+	public void setCantidadPaginas(int cantidadPaginas) {
+		this.cantidadPaginas = cantidadPaginas;
 	}
 
     

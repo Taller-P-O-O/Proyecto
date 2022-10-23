@@ -119,6 +119,14 @@ public class ConexionObjetosMenus {
 	}
 
 	
-	
+	public Edicion BuscarEdicion(String obra, String editorial, String paisEdicion, int numEdicion, int anio, int volumen, String idioma, String formato) {
+		Edicion edi = null;
+		for(int indice = 0; indice < BuscarObra(obra).getEdiciones().size() ;indice++) {
+			if (BuscarObra(obra).getEdiciones().get(indice).getEditorial().equals(editorial) && BuscarObra(obra).getEdiciones().get(indice).getPaisEdicion().equals(paisEdicion) && (BuscarObra(obra).getEdiciones().get(indice).getNumEdicion() == numEdicion) && (BuscarObra(obra).getEdiciones().get(indice).getAnio() == anio) && (BuscarObra(obra).getEdiciones().get(indice).getVolumen() == volumen) && BuscarObra(obra).getEdiciones().get(indice).getIdioma().equals(idioma) && BuscarObra(obra).getEdiciones().get(indice).getFormato().equals(formato)) {
+				edi = BuscarObra(obra).getEdiciones().get(indice);
+			}
+		}
+		return edi;
+	}
 	
 }

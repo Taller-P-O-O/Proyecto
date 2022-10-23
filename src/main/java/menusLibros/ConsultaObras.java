@@ -108,7 +108,6 @@ public class ConsultaObras extends JFrame {
 				        	 RegistrarEdicion RegEd = new RegistrarEdicion(datos, datos.BuscarObra(isbn));
 				        	 RegEd.setVisible(true);
 				        	 ConsultaObras.this.setVisible(false);
-				        	 ;
 				         }
 				 }catch(HeadlessException a){
 					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
@@ -119,6 +118,23 @@ public class ConsultaObras extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_2 = new JButton("Listado de ediciones");
+		btnNewButton_1_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+				        	 String isbn = (String) table.getValueAt(fila, 9);
+				        	 ConsultarEdiciones ConEd = new ConsultarEdiciones(datos, datos.BuscarObra(isbn));
+				        	 ConEd.setVisible(true);
+				        	 ConsultaObras.this.setVisible(false);
+				         }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}		
+		});
 		btnNewButton_1_2.setBounds(209, 422, 151, 26);
 		contentPane.add(btnNewButton_1_2);
 		
