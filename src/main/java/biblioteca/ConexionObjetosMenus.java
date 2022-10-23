@@ -61,6 +61,17 @@ public class ConexionObjetosMenus {
 	    return a;
 	}
 	
+	public boolean ComprobarEdicion(Obra obra, String editorial, String paisEdicion, int numEdicion, int anio, int volumen, String idioma, String formato) {
+		boolean a = false;
+		for(int indice = 0; indice < obra.getEdiciones().size() ;indice++)
+		{
+	     if (obra.getEdiciones().get(indice).getEditorial().equals(editorial) && obra.getEdiciones().get(indice).getPaisEdicion().equals(paisEdicion) && (obra.getEdiciones().get(indice).getNumEdicion() == numEdicion) && (obra.getEdiciones().get(indice).getAnio() == anio) && (obra.getEdiciones().get(indice).getVolumen() == volumen) && obra.getEdiciones().get(indice).getIdioma().equals(idioma) && obra.getEdiciones().get(indice).getFormato().equals(formato)) {
+	        	  a = true;
+	     } 
+		}
+	    return a;
+	}
+	
 	public boolean ComprobarObra(String ISBn) {
 		boolean s = false;
 		for(int indice = 0; indice < Obras.size() ;indice++)
@@ -95,6 +106,17 @@ public class ConexionObjetosMenus {
 	    return b;
 	}
 
+	
+	public Obra BuscarObra(String isbn) {
+		 Obra obr = null;
+		for(int indice = 0; indice < Obras.size() ;indice++)
+		{
+	     if (Obras.get(indice).getISBN().equals(isbn)) {
+	        	  obr = Obras.get(indice);
+	     } 
+		}
+	    return obr;
+	}
 
 	
 	

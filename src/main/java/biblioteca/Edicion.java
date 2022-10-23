@@ -7,11 +7,27 @@ public class Edicion {
 	private int numEdicion;
 	private int anio;
 	private int volumen;
+	private int cantidadPaginas;
 	private String idioma;
 	private String formato;
 	private String ObservacionesGen;
 	private Obra obra;
 	
+	public Edicion(String editorial, String paisEdicion, int numEdicion, int anio, int volumen, int cantidadPaginas, String idioma,
+			String formato, String observacionesGen, Obra obra) {
+		super();
+		this.editorial = editorial;
+		this.paisEdicion = paisEdicion;
+		this.numEdicion = numEdicion;
+		this.anio = anio;
+		this.volumen = volumen;
+		this.cantidadPaginas = cantidadPaginas;
+		this.idioma = idioma;
+		this.formato = formato;
+		ObservacionesGen = observacionesGen;
+		this.obra = obra;
+	}
+
 	public String getEditorial() {
 		return editorial;
 	}

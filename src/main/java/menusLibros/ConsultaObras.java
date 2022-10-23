@@ -1,8 +1,10 @@
 package menusLibros;
 
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +17,7 @@ import biblioteca.Profesor;
 import menus.MenuPrincipal;
 
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
@@ -34,6 +37,7 @@ public class ConsultaObras extends JFrame {
 	private DefaultTableModel model;
 
 
+	@SuppressWarnings("serial")
 	public ConsultaObras(ConexionObjetosMenus dato) {
 		setTitle("Buscador obras");
 		datos = dato;
@@ -93,6 +97,24 @@ public class ConsultaObras extends JFrame {
 
 		
 		JButton btnNewButton_1 = new JButton("Registrar edicion");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+				        	 String isbn = (String) table.getValueAt(fila, 9);
+				        	 RegistrarEdicion RegEd = new RegistrarEdicion(datos, datos.BuscarObra(isbn));
+				        	 RegEd.setVisible(true);
+				        	 ConsultaObras.this.setVisible(false);
+				        	 ;
+				         }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+		});
 		btnNewButton_1.setBounds(384, 422, 131, 26);
 		contentPane.add(btnNewButton_1);
 		
@@ -101,6 +123,22 @@ public class ConsultaObras extends JFrame {
 		contentPane.add(btnNewButton_1_2);
 		
 		JButton btnNewButton_1_3 = new JButton("Ver indice");
+		btnNewButton_1_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			 int fila;
+			 try {
+				 fila = table.getSelectedRow();
+			     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+			         }else{
+			        	 String isbn = (String) table.getValueAt(fila, 9);
+			        	 JOptionPane.showMessageDialog(null, datos.BuscarObra(isbn).getIndice());
+			         }
+			 }catch(HeadlessException a){
+				 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+			 }
+			}
+		});
+		
 		btnNewButton_1_3.setBounds(527, 424, 113, 23);
 		contentPane.add(btnNewButton_1_3);
 		
@@ -127,8 +165,9 @@ public class ConsultaObras extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		model = new DefaultTableModel();
+		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
 	    table.setModel(model);
 		
 		model.addColumn("Clase");

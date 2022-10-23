@@ -15,6 +15,7 @@ import menus.MenuPrincipal;
 import menusLibros.RegistroObras;
 
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -35,6 +36,7 @@ public class ConsultaLectores extends JFrame {
 	private JTable table;
 	private DefaultTableModel model;
 
+	@SuppressWarnings("serial")
 	public ConsultaLectores(ConexionObjetosMenus dato) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		datos = dato;
@@ -114,8 +116,10 @@ public class ConsultaLectores extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
-		model = new DefaultTableModel();
+		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
+
 	    table.setModel(model);
 		
 		model.addColumn("Tipo");

@@ -133,5 +133,10 @@ public class Obra {
     public void aumentarSolicitudG() {
     	this.solicitudGeneral++;
     }
+    
+    public void agregarEdicion(String editorial, String paisEdicion, int numEdicion, int anio, int volumen, int cantidadPaginas, String idioma,
+			String formato, String observacionesGen) {
+    	ediciones.add(new Edicion(editorial, paisEdicion, numEdicion, anio, volumen, cantidadPaginas, idioma, formato, observacionesGen, this));
+    }
 		
 }

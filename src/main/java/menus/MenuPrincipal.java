@@ -65,7 +65,7 @@ public class MenuPrincipal extends JFrame {
 		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
-		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar coleccion");
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar nueva obra de una coleccion");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegistrarColeccion RegC = new RegistrarColeccion(datos);
