@@ -23,17 +23,4 @@ public class Profesor extends Lector {
 		this.carreras = carreras;
 	}
 
-	@Override
-	public void reservarLibro() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void retirarLibro() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }

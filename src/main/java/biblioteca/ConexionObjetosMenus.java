@@ -14,6 +14,7 @@ public class ConexionObjetosMenus {
 	private List<Lector> Lectores = new ArrayList();
 	private List<Usuario> Usuarios = new ArrayList();
 	private List<Obra> Obras = new ArrayList(); 
+	private List<Prestamo> Prestamos = new ArrayList();
 	private  Usuario usuarioActivo;
 	
 	public void CrearUsuario(String NomYApe, String NomU, String Cont) {
@@ -148,6 +149,25 @@ public class ConexionObjetosMenus {
 			}
 		}
 		return edi;
+	}
+	
+	public void crearPrestamo(Ejemplar ejemplarPrestado, int diasPrestamo, Lector prestatario, String bibliotecario, String areaRef){
+		Prestamos.add(new Prestamo(ejemplarPrestado, diasPrestamo, prestatario, bibliotecario, areaRef));
+	}
+	
+	public Lector BuscarLector(String tipoD, int numD){
+		Lector w = null;
+		for(int indice = 0; indice < Lectores.size() ;indice++)
+		{
+	     if (Lectores.get(indice).getTipo().equals(tipoD) && Lectores.get(indice).getDni() == numD) {
+	        	  w = Lectores.get(indice);
+	     } 
+		}
+	    return w;
+	}
+
+	public Usuario getUsuarioActivo() {
+		return usuarioActivo;
 	}
 	
 }

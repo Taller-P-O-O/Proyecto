@@ -109,5 +109,5 @@ public class BajaEjemplar extends JFrame {
 		});
 		btnNewButton_1.setBounds(175, 156, 118, 26);
 		contentPane.add(btnNewButton_1);
-	}
+	}	
 }

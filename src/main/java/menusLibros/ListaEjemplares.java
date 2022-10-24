@@ -14,6 +14,7 @@ import biblioteca.ConexionObjetosMenus;
 import biblioteca.Edicion;
 import biblioteca.Ejemplar;
 import biblioteca.Obra;
+import menusPrestamos.Prestamos;
 
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -35,7 +36,7 @@ public class ListaEjemplares extends JFrame {
 	private DefaultTableModel model;
 
 
-	public ListaEjemplares(ConexionObjetosMenus dato, Obra lib, Edicion edic ) {
+	public ListaEjemplares(ConexionObjetosMenus dato, Obra lib, Edicion edic) {
 		setTitle("Buscador ejemplares");
 		datos = dato;
 		libro = lib;
@@ -81,6 +82,30 @@ public class ListaEjemplares extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_1 = new JButton("Reservar");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+                             Integer id = (Integer) table.getValueAt(fila, 4);
+                             if(datos.BuscarEjemplar(libro.getISBN(), id).isDadoBaja() == false) {
+                            if(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario() == null) { 
+                             Prestamos prest = new Prestamos(datos, libro, edicion, datos.BuscarEjemplar(libro.getISBN(), id));
+                             prest.setVisible(true);
+                             ListaEjemplares.this.setVisible(false);
+                            }else{
+                               	JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra prestado, reservelo o solicite el pretamos de otro ejemplar", "Prestamo", JOptionPane.INFORMATION_MESSAGE);
+                            	}}else {
+                            		JOptionPane.showMessageDialog(null,"Error", "Este ejemplar fue dado de baja", JOptionPane.ERROR_MESSAGE);
+                            	}
+                            }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+		});
 		btnNewButton_1_1.setBounds(435, 493, 86, 26);
 		contentPane.add(btnNewButton_1_1);
 		

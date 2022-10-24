@@ -99,7 +99,7 @@ public class Prestamo {
 		this.ejemplarPrestado = ejemplarPrestado;
 	}
 	
-	public void crearPrestamos(Ejemplar ejemplarPrestado, int diasPrestamo, Lector prestatario, String bibliotecario, String areaRef) {
+	public Prestamo(Ejemplar ejemplarPrestado, int diasPrestamo, Lector prestatario, String bibliotecario, String areaRef) {
 		this.fecha = LocalDate.now();
 		this.hora = LocalTime.now();
 		this.ejemplarPrestado = ejemplarPrestado;
@@ -108,7 +108,8 @@ public class Prestamo {
 		this.nombreFuncionarioEntrega = bibliotecario;
 		this.areaReferenciaLibro = areaRef;
 		ejemplarPrestado.setPrestatario(this);
-		prestatario.set
+		prestatario.retirarLibro(this);
+		this.ejemplarPrestado.setPrestatario(this);
 	}
 
 	

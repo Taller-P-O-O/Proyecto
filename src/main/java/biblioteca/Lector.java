@@ -164,12 +164,12 @@ public abstract class Lector {
 		this.ejemplaresReservado = ejemplaresReservado;
 	}
 	
-    public abstract void reservarLibro() {
-    	
+    public void reservarLibro(Reserva reserva) {
+    	this.ejemplaresReservado.add(reserva);
     }
     
-    public abstract void retirarLibro() {
-    	
+    public void retirarLibro(Prestamo prestamo) {
+    	this.ejemplaresPrestado.add(prestamo);
     }
     
 }
