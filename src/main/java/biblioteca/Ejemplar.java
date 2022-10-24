@@ -140,9 +140,11 @@ public class Ejemplar {
 		this.edicion = edicion;
 	}
 	
-	public void darDeBaja(String motivoBaja, String ubicacionBaja) {
-		
-		fechaBaja = LocalDate.now();
+	public void darDeBaja(LocalDate fechaBaja, String motivoBaja, String ubicacionBaja) {
+		this.dadoBaja = true;
+		this.fechaBaja = fechaBaja;
+		this.motivoBaja = motivoBaja;
+		this.ubicacionBaja = ubicacionBaja;
 	}
 	
 	

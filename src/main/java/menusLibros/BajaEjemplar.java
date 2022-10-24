@@ -16,8 +16,10 @@ import biblioteca.Obra;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.time.ZoneId;
 import java.awt.event.ActionEvent;
 
 public class BajaEjemplar extends JFrame {
@@ -84,6 +86,27 @@ public class BajaEjemplar extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Confirmar baja");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!(textField_1.getText().trim().isEmpty()) && !(textField_2.getText().trim().isEmpty()) && !(dateChooser.getDate() == null)) {
+					if (!(ejemplar.isDadoBaja())) {
+					try {
+						ejemplar.darDeBaja(dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), textField_1.getText(), textField_2.getText());
+						JOptionPane.showMessageDialog(null, "El ejemplar se a dado de baja correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
+						ListaEjemplares ListEjem = new ListaEjemplares(datos, libro, edicion);
+						ListEjem.setVisible(true);
+				        BajaEjemplar.this.setVisible(false);
+					} catch(IllegalArgumentException a){
+						JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+		} else {
+						JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra dado de baja", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Error en el ingreso de datos", "Error", JOptionPane.ERROR_MESSAGE);
+				}				
+			}
+		});
 		btnNewButton_1.setBounds(175, 156, 118, 26);
 		contentPane.add(btnNewButton_1);
 	}

@@ -11,10 +11,13 @@ public class Prestamo {
 	private String areaReferenciaLibro;
 	private LocalDate fechaDevol;
 	private LocalTime horaDevol;
-	private String nombreFuncionario;
+	private String nombreFuncionarioEntrega;
+	private String nombreFuncionarioDevolucion;
 	private int diasPrestamo;
 	private Ejemplar ejemplarPrestado;
 	private List<Multa> Multas;
+	
+	
 	
 	public LocalDate getFecha() {
 		return fecha;
@@ -64,14 +67,22 @@ public class Prestamo {
 		this.horaDevol = horaDevol;
 	}
 	
-	public String getNombreFuncionario() {
-		return nombreFuncionario;
+	public String getNombreFuncionarioEntrega() {
+		return nombreFuncionarioEntrega;
 	}
-	
-	public void setNombreFuncionario(String nombreFuncionario) {
-		this.nombreFuncionario = nombreFuncionario;
+
+	public void setNombreFuncionarioEntrega(String nombreFuncionarioEntrega) {
+		this.nombreFuncionarioEntrega = nombreFuncionarioEntrega;
 	}
-	
+
+	public String getNombreFuncionarioDevolucion() {
+		return nombreFuncionarioDevolucion;
+	}
+
+	public void setNombreFuncionarioDevolucion(String nombreFuncionarioDevolucion) {
+		this.nombreFuncionarioDevolucion = nombreFuncionarioDevolucion;
+	}
+
 	public int getDiasPrestamo() {
 		return diasPrestamo;
 	}
@@ -88,6 +99,17 @@ public class Prestamo {
 		this.ejemplarPrestado = ejemplarPrestado;
 	}
 	
+	public void crearPrestamos(Ejemplar ejemplarPrestado, int diasPrestamo, Lector prestatario, String bibliotecario, String areaRef) {
+		this.fecha = LocalDate.now();
+		this.hora = LocalTime.now();
+		this.ejemplarPrestado = ejemplarPrestado;
+		this.diasPrestamo = diasPrestamo;
+		this.prestatario = prestatario;
+		this.nombreFuncionarioEntrega = bibliotecario;
+		this.areaReferenciaLibro = areaRef;
+		ejemplarPrestado.setPrestatario(this);
+		prestatario.set
+	}
 
 	
 }

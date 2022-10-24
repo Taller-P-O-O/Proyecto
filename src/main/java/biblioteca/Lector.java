@@ -164,8 +164,12 @@ public abstract class Lector {
 		this.ejemplaresReservado = ejemplaresReservado;
 	}
 	
-    public abstract void reservarLibro();
+    public abstract void reservarLibro() {
+    	
+    }
     
-    public abstract void retirarLibro();
+    public abstract void retirarLibro() {
+    	
+    }
     
 }
