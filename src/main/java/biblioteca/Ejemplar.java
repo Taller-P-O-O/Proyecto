@@ -25,7 +25,7 @@ public class Ejemplar {
 		super();
 		this.codigoBarras = codigoBarras;
 		this.posicionBiblio = posicionBiblio;
-		IDUnica = iDUnica;
+		this.IDUnica = iDUnica;
 		this.fechaAdqui = fechaAdqui;
 		this.formaAdqui = formaAdqui;
 		this.obra = obra;
@@ -140,7 +140,10 @@ public class Ejemplar {
 		this.edicion = edicion;
 	}
 	
+	public void darDeBaja(String motivoBaja, String ubicacionBaja) {
+		
+		fechaBaja = LocalDate.now();
+	}
 	
 	
-
 }

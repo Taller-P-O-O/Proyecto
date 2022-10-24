@@ -2,14 +2,17 @@ package menusLibros;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import biblioteca.ConexionObjetosMenus;
 import biblioteca.Edicion;
+import biblioteca.Ejemplar;
 import biblioteca.Obra;
 
 import javax.swing.JTextField;
@@ -18,6 +21,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ListaEjemplares extends JFrame {
@@ -55,6 +59,24 @@ public class ListaEjemplares extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Dar de baja");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+                             Integer id = (Integer) table.getValueAt(fila, 4); 
+                             
+                             BajaEjemplar bajEjam = new BajaEjemplar(datos, libro, edicion, datos.BuscarEjemplar(libro.getISBN(), id));
+                             bajEjam.setVisible(true);
+                             ListaEjemplares.this.setVisible(false);
+				         }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+		});
 		btnNewButton_1.setBounds(299, 493, 98, 26);
 		contentPane.add(btnNewButton_1);
 		
@@ -87,5 +109,39 @@ public class ListaEjemplares extends JFrame {
 		
 		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
 	    table.setModel(model);
+	    
+		model.addColumn("Obra");
+		model.addColumn("Editorial");
+		model.addColumn("Codigo de barras");
+		model.addColumn("posicion en biblioteca");
+		model.addColumn("ID");
+		model.addColumn("Fecha de adquisicion");
+		model.addColumn("Forma de adquisicion");
+		
+	    table.getTableHeader().setReorderingAllowed(false);
+	    llenarTabla();
+	    
+	}
+	public void llenarTabla() {
+		List<Ejemplar> listaEjemplares = libro.getEjemplares();
+		
+
+		for( Ejemplar ejemplar : listaEjemplares) {
+			Object[] fila = new Object[7];
+			
+			if(ejemplar.getEdicion().equals(edicion)) { 
+				
+			fila[0] = libro.getTitulo();
+			fila[1] = edicion.getEditorial();
+			fila[2] = ejemplar.getCodigoBarras();
+			fila[3] = ejemplar.getPosicionBiblio();
+			fila[4] = ejemplar.getIDUnica();
+			fila[5] = ejemplar.getFormaAdqui();
+			fila[6] = ejemplar.getFormaAdqui();
+
+			model.addRow(fila);
+		}
+			}
 	}
 }
+

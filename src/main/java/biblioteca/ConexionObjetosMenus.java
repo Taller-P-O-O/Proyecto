@@ -130,6 +130,15 @@ public class ConexionObjetosMenus {
 	    return obr;
 	}
 
+	public Ejemplar BuscarEjemplar(String obra,int id) {
+		Ejemplar ejem = null;
+		for(int indice = 0; indice < BuscarObra(obra).getEjemplares().size() ;indice++) {
+			if(BuscarObra(obra).getEjemplares().get(indice).getIDUnica() == id) {
+				ejem = BuscarObra(obra).getEjemplares().get(indice);
+			}
+		}
+		return ejem;
+	}
 	
 	public Edicion BuscarEdicion(String obra, String editorial, String paisEdicion, int numEdicion, int anio, int volumen, String idioma, String formato) {
 		Edicion edi = null;

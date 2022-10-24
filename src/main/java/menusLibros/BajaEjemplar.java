@@ -7,55 +7,84 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.toedter.calendar.JDateChooser;
+
 import biblioteca.ConexionObjetosMenus;
+import biblioteca.Edicion;
+import biblioteca.Ejemplar;
+import biblioteca.Obra;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BajaEjemplar extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private final Obra libro;
+	private final Edicion edicion;
+	private final Ejemplar ejemplar;
 	private final ConexionObjetosMenus datos;
 
 
-	public BajaEjemplar(ConexionObjetosMenus dato) {
+	public BajaEjemplar(ConexionObjetosMenus dato, Obra lib, Edicion edic, Ejemplar ejem) {
+		setTitle("Baja de ejemplar");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		datos = dato;
-		setBounds(100, 100, 450, 300);
+		libro = lib;
+		edicion = edic;
+		ejemplar = ejem;
+		setBounds(100, 100, 354, 233);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(201, 35, 140, 25);
-		contentPane.add(textField);
+		this.setResizable(false);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(201, 71, 140, 25);
+		textField_1.setBounds(145, 61, 140, 25);
 		contentPane.add(textField_1);
 		
 		JLabel lblFechaDeBaja = new JLabel("Fecha de baja:");
-		lblFechaDeBaja.setBounds(119, 40, 72, 14);
+		lblFechaDeBaja.setBounds(53, 29, 81, 16);
 		contentPane.add(lblFechaDeBaja);
 		
 		JLabel lblNewLabel_1 = new JLabel("Motivo baja:");
-		lblNewLabel_1.setBounds(131, 76, 60, 14);
+		lblNewLabel_1.setBounds(65, 65, 67, 16);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Ubicacion baja:");
-		lblNewLabel_2.setBounds(118, 112, 73, 14);
+		lblNewLabel_2.setBounds(52, 101, 86, 16);
 		contentPane.add(lblNewLabel_2);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		textField_2.setBounds(201, 107, 140, 25);
+		textField_2.setBounds(145, 96, 140, 25);
 		contentPane.add(textField_2);
+		
+		final JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(145, 20, 140, 25);
+		dateChooser.getDateEditor().setEnabled(false);
+		contentPane.add(dateChooser);
+		
+		JButton btnNewButton = new JButton("Atras");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListaEjemplares ListEjem = new ListaEjemplares(datos, libro, edicion);
+				ListEjem.setVisible(true);
+		        BajaEjemplar.this.setVisible(false);
+			}
+		});
+		btnNewButton.setBounds(69, 156, 65, 26);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Confirmar baja");
+		btnNewButton_1.setBounds(175, 156, 118, 26);
+		contentPane.add(btnNewButton_1);
 	}
-
 }
