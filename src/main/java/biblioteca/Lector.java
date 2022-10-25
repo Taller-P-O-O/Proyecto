@@ -22,6 +22,7 @@ public abstract class Lector {
 	private List<Prestamo> ejemplaresPrestado;
 	private List<Reserva> ejemplaresReservado;
 	private LocalDate fechaFinUltimaMulta;
+	private int cantidadMultas;
 	
 	
 	
@@ -44,6 +45,7 @@ public abstract class Lector {
 		this.ejemplaresPrestado = new ArrayList();
 		this.ejemplaresReservado = new ArrayList();
 		this.fechaFinUltimaMulta = null;
+		this.cantidadMultas = 0;
 	}
 
 	public String getNombre() {
@@ -183,6 +185,9 @@ public abstract class Lector {
 		this.fechaFinUltimaMulta = finUltimaMulta;
 	}
 	
+	public void aumentarCantidadMultas() {
+		this.cantidadMultas++;
+	}
 
     
 }

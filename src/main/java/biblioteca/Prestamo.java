@@ -111,6 +111,11 @@ public class Prestamo {
 		this.areaReferenciaLibro = areaRef;
 		ejemplarPrestado.setPrestatario(this);
 		prestatario.retirarLibro(this);
+		if(prestatario instanceof PublicoGeneral) {
+			ejemplarPrestado.aumentarSolicitudPubGen();
+		}else {
+			ejemplarPrestado.aumentarSolicitudProfyAlum();;
+		}
 		this.ejemplarPrestado.setPrestatario(this);
 		this.fechaEstimadaDevol = LocalDate.now().plusDays(diasPrestamo);
 		this.Multas = new ArrayList();

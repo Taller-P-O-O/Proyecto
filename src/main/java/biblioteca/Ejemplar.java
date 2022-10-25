@@ -32,6 +32,15 @@ public class Ejemplar {
 		this.edicion = edicion;
 	}
 
+public void aumentarSolicitudPubGen() {
+	this.edicion.getObra().aumentarSolicitudG();
+}
+
+public void aumentarSolicitudProfyAlum() {
+	this.edicion.getObra().aumentarSolicitudAYP();
+}
+	
+	
 	public int getCodigoBarras() {
 		return codigoBarras;
 	}
@@ -126,10 +135,6 @@ public class Ejemplar {
 	
 	public void setPrestatario(Prestamo prestatario) {
 		this.prestatario = prestatario;
-	}
-	
-	public void aumentarSolicitud() {
-		
 	}
 
 	public Edicion getEdicion() {

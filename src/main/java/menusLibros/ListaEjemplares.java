@@ -15,6 +15,7 @@ import biblioteca.Edicion;
 import biblioteca.Ejemplar;
 import biblioteca.Obra;
 import menusPrestamos.Prestamos;
+import menusReservas.Reservas;
 
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
@@ -96,7 +97,7 @@ public class ListaEjemplares extends JFrame {
                              prest.setVisible(true);
                              ListaEjemplares.this.setVisible(false);
                             }else{
-                               	JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra prestado, reservelo o solicite el pretamos de otro ejemplar", "Prestamo", JOptionPane.INFORMATION_MESSAGE);
+                               	JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra prestado, reservelo para el " + datos.buscarPrestamo(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getPrestatario().getTipo(), datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getPrestatario().getDni(), datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getEjemplarPrestado().getEdicion().getObra().getISBN(),  datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getEjemplarPrestado().getIDUnica()).getFechaEstimadaDevol()+ " o solicite el pretamos de otro ejemplar", "Prestamo", JOptionPane.INFORMATION_MESSAGE);
                             	}}else {
                             		JOptionPane.showMessageDialog(null,"Este ejemplar fue dado de baja", "Error", JOptionPane.ERROR_MESSAGE);
                             	}
@@ -121,6 +122,36 @@ public class ListaEjemplares extends JFrame {
 		contentPane.add(btnNewButton_1_2);
 		
 		JButton btnNewButton_1_1_1 = new JButton("Reserva");
+		btnNewButton_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+                             Integer id = (Integer) table.getValueAt(fila, 4);
+                             if(datos.BuscarEjemplar(libro.getISBN(), id).isDadoBaja() == false) {
+                            if(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario() == null) { 
+                            	if(datos.BuscarEjemplar(libro.getISBN(), id).getReservante() != null) {
+                             Reservas prest = new Reservas(datos, libro, edicion, datos.BuscarEjemplar(libro.getISBN(), id), datos.buscarPrestamo(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getPrestatario().getTipo(), datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getPrestatario().getDni(), datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getEjemplarPrestado().getEdicion().getObra().getISBN(),  datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getEjemplarPrestado().getIDUnica()).getFechaEstimadaDevol());
+                             prest.setVisible(true);
+                             ListaEjemplares.this.setVisible(false);
+                             }else{
+                            	 JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra reservado", "Reserva", JOptionPane.INFORMATION_MESSAGE);
+                             }
+                            }else{
+                               	JOptionPane.showMessageDialog(null, "Este ejemplar se encuentra disponible para ser prestado", "Reserva", JOptionPane.INFORMATION_MESSAGE);
+                            	}
+                            }else {
+                            		JOptionPane.showMessageDialog(null,"Este ejemplar fue dado de baja", "Error", JOptionPane.ERROR_MESSAGE);
+                            	}
+                            }
+				 }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			}
+		});
+		
 		btnNewButton_1_1_1.setBounds(554, 493, 90, 26);
 		contentPane.add(btnNewButton_1_1_1);
 		

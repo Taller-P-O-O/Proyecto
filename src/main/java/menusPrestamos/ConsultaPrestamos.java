@@ -79,6 +79,10 @@ public class ConsultaPrestamos extends JFrame {
 				        			Multa Mul = new Multa(datos, datos.buscarPrestamo(tipoDoc, numDni, obra, IdEjemplar));
 				    		        Mul.setVisible(true);
 				    		        ConsultaPrestamos.this.setVisible(false);
+				        	 } else {
+				        		ConsultaPrestamos ConPre = new ConsultaPrestamos(datos);
+				 				ConPre.setVisible(true);
+				 				ConsultaPrestamos.this.setVisible(false);
 				        	 }
 				         } }catch(HeadlessException a){
 					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);

@@ -35,6 +35,7 @@ public class Multa {
 		}
 		prestamo.getPrestatario().setFechaFinUltimaMulta(fechaFinMulta);
 		prestamo.agregarMulta(this);
+		prestamo.getPrestatario().aumentarCantidadMultas();
 	}
 
 	

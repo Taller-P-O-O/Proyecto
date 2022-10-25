@@ -15,8 +15,13 @@ public class ConexionObjetosMenus {
 	private List<Usuario> Usuarios = new ArrayList();
 	private List<Obra> Obras = new ArrayList(); 
 	private List<Prestamo> Prestamos = new ArrayList();
+	private List<Reserva> Reservas = new ArrayList();
 
 	
+	public List<Reserva> getReservas() {
+		return Reservas;
+	}
+
 	public List<Prestamo> getPrestamos() {
 		return Prestamos;
 	}
@@ -161,6 +166,10 @@ public class ConexionObjetosMenus {
 		Prestamos.add(new Prestamo(ejemplarPrestado, diasPrestamo, prestatario, bibliotecario, areaRef));
 	}
 	
+	public void crearReserva(Ejemplar ejemplarReservado, Lector reservante, LocalDate fecha) {
+		Reservas.add(new Reserva(ejemplarReservado, reservante, fecha));
+	}
+	
 	public Lector BuscarLector(String tipoD, int numD){
 		Lector w = null;
 		for(int indice = 0; indice < Lectores.size() ;indice++)
@@ -185,7 +194,12 @@ public class ConexionObjetosMenus {
 	     } 
 		}
 	    return w;
+	}
+	
+	public Reserva buscarReserva() {
+		
 		
 	}
+	
 	
 }

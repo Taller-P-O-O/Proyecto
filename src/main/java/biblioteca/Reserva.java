@@ -8,6 +8,15 @@ public class Reserva {
 	private Ejemplar ejemplarReservado;
 	private Lector reservante;
 	
+	
+	public Reserva(Ejemplar ejemplarReservado, Lector reservante, LocalDate fechaReserva) {
+		this.ejemplarReservado = ejemplarReservado;
+		this.reservante = reservante;
+		this.fecha = fechaReserva;
+		ejemplarReservado.setReservante(this);
+		reservante.reservarLibro(this);
+	}
+	
 	public LocalDate getFecha() {
 		return fecha;
 	}

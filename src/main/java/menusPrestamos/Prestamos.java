@@ -70,7 +70,7 @@ public class Prestamos extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 43, 761, 338);
+		scrollPane.setBounds(10, 43, 773, 338);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
