@@ -15,6 +15,7 @@ public class ConexionObjetosMenus {
 	private List<Usuario> Usuarios = new ArrayList();
 	private List<Obra> Obras = new ArrayList(); 
 	private List<Prestamo> Prestamos = new ArrayList();
+
 	
 	public List<Prestamo> getPrestamos() {
 		return Prestamos;
@@ -173,6 +174,18 @@ public class ConexionObjetosMenus {
 
 	public Usuario getUsuarioActivo() {
 		return usuarioActivo;
+	}
+	
+	public Prestamo buscarPrestamo(String tipoD, int NumDn,String obra, int Id) {
+		Prestamo w = null;
+		for(int indice = 0; indice <Prestamos.size() ;indice++)
+		{
+	     if (Prestamos.get(indice).getPrestatario().equals(BuscarLector(tipoD, NumDn)) && Prestamos.get(indice).getEjemplarPrestado().equals(BuscarEjemplar(obra, Id))) {
+	        	  w = Prestamos.get(indice);
+	     } 
+		}
+	    return w;
+		
 	}
 	
 }

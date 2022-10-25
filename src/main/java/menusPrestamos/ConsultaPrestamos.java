@@ -2,8 +2,10 @@ package menusPrestamos;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +15,8 @@ import biblioteca.Ejemplar;
 import biblioteca.Prestamo;
 import menus.MenuPrincipal;
 import menusLectores.ConsultaLectores;
+import menusLibros.ConsultaObras;
+import menusLibros.RegistrarEdicion;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -21,6 +25,7 @@ import javax.swing.JTable;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -58,6 +63,29 @@ public class ConsultaPrestamos extends JFrame {
 		
 		
 		JButton btnNewButton_1 = new JButton("Registrar devolucion");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 int fila;
+				 try {
+					 fila = table.getSelectedRow();
+				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+				         }else{
+				        	 String obra = (String) table.getValueAt(fila, 1);
+				        	 Integer IdEjemplar = (Integer) table.getValueAt(fila, 2);
+				        	 String tipoDoc = (String) table.getValueAt(fila, 6);
+				        	 Integer numDni = (Integer) table.getValueAt(fila, 5);
+				        	 datos.buscarPrestamo(tipoDoc, numDni, obra, IdEjemplar).registrarDevolucion(datos.getUsuarioActivo().getNombreYApellido());
+				        	 if(datos.buscarPrestamo(tipoDoc, numDni, obra, IdEjemplar).getFechaEstimadaDevol().isBefore(LocalDate.now())) {
+				        			Multa Mul = new Multa(datos, datos.buscarPrestamo(tipoDoc, numDni, obra, IdEjemplar));
+				    		        Mul.setVisible(true);
+				    		        ConsultaPrestamos.this.setVisible(false);
+				        	 }
+				         } }catch(HeadlessException a){
+					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
+				 }
+			} 
+		});
+		
 		btnNewButton_1.setBounds(364, 363, 151, 26);
 		contentPane.add(btnNewButton_1);
 		
@@ -108,7 +136,9 @@ public class ConsultaPrestamos extends JFrame {
 	    table.setModel(model);
 	    
 		model.addColumn("Obra");
+		model.addColumn("ISBN");
 		model.addColumn("ID ejemplar");
+		model.addColumn("Area de referencia");
 		model.addColumn("Lector");
 		model.addColumn("DNI");
 		model.addColumn("Tipo doc.");
@@ -124,17 +154,23 @@ public class ConsultaPrestamos extends JFrame {
 		
 
 		for(Prestamo prestamo : listaPrestamos) {
-			Object[] fila = new Object[7];
+			if(prestamo.getFechaDevol() == null) {
+			Object[] fila = new Object[9];
 				
 			fila[0] = prestamo.getEjemplarPrestado().getEdicion().getObra().getTitulo();
-			fila[1] = prestamo.getEjemplarPrestado().getIDUnica();
-			fila[2] = (prestamo.getPrestatario().getNombre() + "" + prestamo.getPrestatario().getApellido());
-			fila[3] = prestamo.getPrestatario().getDni();
-			fila[4] = prestamo.getPrestatario().getTipo();
-			fila[5] = prestamo.getDiasPrestamo();
-			fila[6] = prestamo.getFechaEstimadaDevol();
+			fila[1] = prestamo.getEjemplarPrestado().getEdicion().getObra().getISBN();
+			fila[2] = prestamo.getEjemplarPrestado().getIDUnica();
+			fila[3] = prestamo.getEjemplarPrestado().getEdicion().getObra().getTematica();
+			fila[4] = (prestamo.getPrestatario().getNombre() + " " + prestamo.getPrestatario().getApellido());
+			fila[5] = prestamo.getPrestatario().getDni();
+			fila[6] = prestamo.getPrestatario().getTipo();
+			fila[7] = prestamo.getDiasPrestamo();
+			fila[8] = prestamo.getFechaEstimadaDevol();
 
 			model.addRow(fila);
-			}
+			}}
 	}
+	
 }
+	
+

@@ -1,6 +1,7 @@
 package biblioteca;
 
 import java.time.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Prestamo {
@@ -112,12 +113,15 @@ public class Prestamo {
 		prestatario.retirarLibro(this);
 		this.ejemplarPrestado.setPrestatario(this);
 		this.fechaEstimadaDevol = LocalDate.now().plusDays(diasPrestamo);
+		this.Multas = new ArrayList();
 	}
 	
-  public void registrarDevolucion() {
+  public void registrarDevolucion(String bibliotecario) {
 		ejemplarPrestado.setPrestatario(null);
-		prestatario.devolverLibro(this);
-
+		this.fechaDevol = LocalDate.now();
+		this.horaDevol =  LocalTime.now();
+		this.nombreFuncionarioDevolucion = bibliotecario;
+		
   }
 
 public List<Multa> getMultas() {

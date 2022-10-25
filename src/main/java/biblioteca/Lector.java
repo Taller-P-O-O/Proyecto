@@ -183,13 +183,6 @@ public abstract class Lector {
 		this.fechaFinUltimaMulta = finUltimaMulta;
 	}
 	
-	public void devolverLibro(Prestamo presta) {
-		Ejemplar ejem = null;
-		for(int indice = 0; indice < ejemplaresPrestado.size() ;indice++) {
-			if(ejemplaresPrestado.get(indice) == presta) {
-				ejemplaresPrestado.remove(indice);
-			}
-		}
-	}
+
     
 }
