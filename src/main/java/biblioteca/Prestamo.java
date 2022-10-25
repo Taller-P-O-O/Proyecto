@@ -9,6 +9,7 @@ public class Prestamo {
 	private LocalTime hora;
 	private Lector prestatario;
 	private String areaReferenciaLibro;
+	private LocalDate fechaEstimadaDevol;
 	private LocalDate fechaDevol;
 	private LocalTime horaDevol;
 	private String nombreFuncionarioEntrega;
@@ -110,7 +111,28 @@ public class Prestamo {
 		ejemplarPrestado.setPrestatario(this);
 		prestatario.retirarLibro(this);
 		this.ejemplarPrestado.setPrestatario(this);
+		this.fechaEstimadaDevol = LocalDate.now().plusDays(diasPrestamo);
 	}
+	
+  public void registrarDevolucion() {
+		ejemplarPrestado.setPrestatario(null);
+		prestatario.devolverLibro(this);
 
+  }
+
+public List<Multa> getMultas() {
+	return Multas;
+}
+public void agregarMulta(Multa multa) {
+	this.Multas.add(multa);
+}
+
+public LocalDate getFechaEstimadaDevol() {
+	return fechaEstimadaDevol;
+}
+
+public void setFechaEstimadaDevol(LocalDate fechaEstimadaDevol) {
+	this.fechaEstimadaDevol = fechaEstimadaDevol;
+}
 	
 }

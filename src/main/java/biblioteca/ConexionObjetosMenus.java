@@ -15,6 +15,11 @@ public class ConexionObjetosMenus {
 	private List<Usuario> Usuarios = new ArrayList();
 	private List<Obra> Obras = new ArrayList(); 
 	private List<Prestamo> Prestamos = new ArrayList();
+	
+	public List<Prestamo> getPrestamos() {
+		return Prestamos;
+	}
+
 	private  Usuario usuarioActivo;
 	
 	public void CrearUsuario(String NomYApe, String NomU, String Cont) {

@@ -6,8 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import biblioteca.ConexionObjetosMenus;
+import biblioteca.Ejemplar;
+import biblioteca.Prestamo;
 import menus.MenuPrincipal;
 import menusLectores.ConsultaLectores;
 
@@ -18,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class ConsultaPrestamos extends JFrame {
@@ -27,6 +31,7 @@ public class ConsultaPrestamos extends JFrame {
 	private JTable table;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
     private final ConexionObjetosMenus datos;
+	private DefaultTableModel model;
 
 	public ConsultaPrestamos(ConexionObjetosMenus dato) {
 		setTitle("Consulta prestamos");
@@ -49,13 +54,12 @@ public class ConsultaPrestamos extends JFrame {
 		btnNewButton.setBounds(587, 12, 75, 20);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Registrar devolucion");
-		btnNewButton_1.setBounds(279, 363, 151, 26);
-		contentPane.add(btnNewButton_1);
+		table = new JTable();
 		
-		JButton btnNewButton_1_1 = new JButton("Multar");
-		btnNewButton_1_1.setBounds(462, 363, 70, 26);
-		contentPane.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_1 = new JButton("Registrar devolucion");
+		btnNewButton_1.setBounds(364, 363, 151, 26);
+		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_2 = new JButton("Atras");
 		btnNewButton_1_2.addActionListener(new ActionListener() {
@@ -65,15 +69,14 @@ public class ConsultaPrestamos extends JFrame {
 		        ConsultaPrestamos.this.setVisible(false);
 			}
 		});
-		btnNewButton_1_2.setBounds(192, 363, 65, 26);
+		btnNewButton_1_2.setBounds(203, 363, 65, 26);
 		contentPane.add(btnNewButton_1_2);
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 64, 642, 288);
 		contentPane.add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+        scrollPane.setViewportView(table);
 		
 		JRadioButton rdbtnNombreObra = new JRadioButton("Nombre obra");
 		buttonGroup.add(rdbtnNombreObra);
@@ -100,5 +103,38 @@ public class ConsultaPrestamos extends JFrame {
 		buttonGroup.add(rdbtnNewRadioButton_1_4);
 		rdbtnNewRadioButton_1_4.setBounds(333, 36, 37, 23);
 		contentPane.add(rdbtnNewRadioButton_1_4);
+		
+		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
+	    table.setModel(model);
+	    
+		model.addColumn("Obra");
+		model.addColumn("ID ejemplar");
+		model.addColumn("Lector");
+		model.addColumn("DNI");
+		model.addColumn("Tipo doc.");
+		model.addColumn("dias de prestamo");
+		model.addColumn("Fecha de devolucion");
+		
+	    table.getTableHeader().setReorderingAllowed(false);
+	    llenarTabla();
+	}
+	
+	public void llenarTabla() {
+		List<Prestamo> listaPrestamos = datos.getPrestamos();
+		
+
+		for(Prestamo prestamo : listaPrestamos) {
+			Object[] fila = new Object[7];
+				
+			fila[0] = prestamo.getEjemplarPrestado().getEdicion().getObra().getTitulo();
+			fila[1] = prestamo.getEjemplarPrestado().getIDUnica();
+			fila[2] = (prestamo.getPrestatario().getNombre() + "" + prestamo.getPrestatario().getApellido());
+			fila[3] = prestamo.getPrestatario().getDni();
+			fila[4] = prestamo.getPrestatario().getTipo();
+			fila[5] = prestamo.getDiasPrestamo();
+			fila[6] = prestamo.getFechaEstimadaDevol();
+
+			model.addRow(fila);
+			}
 	}
 }

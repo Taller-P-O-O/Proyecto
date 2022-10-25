@@ -21,6 +21,7 @@ public abstract class Lector {
 	private String localidad;
 	private List<Prestamo> ejemplaresPrestado;
 	private List<Reserva> ejemplaresReservado;
+	private LocalDate fechaFinUltimaMulta;
 	
 	
 	
@@ -42,6 +43,7 @@ public abstract class Lector {
 		this.localidad = localidad;
 		this.ejemplaresPrestado = new ArrayList();
 		this.ejemplaresReservado = new ArrayList();
+		this.fechaFinUltimaMulta = null;
 	}
 
 	public String getNombre() {
@@ -171,5 +173,23 @@ public abstract class Lector {
     public void retirarLibro(Prestamo prestamo) {
     	this.ejemplaresPrestado.add(prestamo);
     }
+    
+
+	public LocalDate getFechaFinUltimaMulta() {
+		return fechaFinUltimaMulta;
+	}
+
+	public void setFechaFinUltimaMulta(LocalDate finUltimaMulta) {
+		this.fechaFinUltimaMulta = finUltimaMulta;
+	}
+	
+	public void devolverLibro(Prestamo presta) {
+		Ejemplar ejem = null;
+		for(int indice = 0; indice < ejemplaresPrestado.size() ;indice++) {
+			if(ejemplaresPrestado.get(indice) == presta) {
+				ejemplaresPrestado.remove(indice);
+			}
+		}
+	}
     
 }

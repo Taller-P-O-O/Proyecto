@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -95,15 +96,22 @@ public class Prestamos extends JFrame {
 				         }else{
                              String tipodni = (String) table.getValueAt(fila, 3); 
 				        	 Integer dni = (Integer) table.getValueAt(fila, 4); 
-				        	 if() {
-                             
+				        	 if(datos.BuscarLector(tipodni, dni).getFechaFinUltimaMulta() != null) {
+				        	 if(datos.BuscarLector(tipodni, dni).getFechaFinUltimaMulta().isBefore(LocalDate.now())) {
                             datos.crearPrestamo(ejemplar, Integer.parseInt(spinner.getValue().toString()), datos.BuscarLector(tipodni, dni), datos.getUsuarioActivo().getNombreYApellido(), libro.getTematica());
                         	JOptionPane.showMessageDialog(null, "El prestamo se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
                             ListaEjemplares ListEjem = new ListaEjemplares(datos, libro, edicion);
             				ListEjem.setVisible(true);
             		        Prestamos.this.setVisible(false);
 				        	 }else {
-				        		 JOptionPane.showMessageDialog(null,"Error", "El lector se encuentra multado", JOptionPane.ERROR_MESSAGE); 
+				        		 JOptionPane.showMessageDialog(null,"Error", ("El lector se encuentra multado, su multa finaliza el dia: " + datos.BuscarLector(tipodni, dni).getFechaFinUltimaMulta()) , JOptionPane.ERROR_MESSAGE); 
+				        	 }
+				        	 } else {
+				        		    datos.crearPrestamo(ejemplar, Integer.parseInt(spinner.getValue().toString()), datos.BuscarLector(tipodni, dni), datos.getUsuarioActivo().getNombreYApellido(), libro.getTematica());
+		                        	JOptionPane.showMessageDialog(null, "El prestamo se a registrado correctamente", "Registro completo", JOptionPane.INFORMATION_MESSAGE);
+		                            ListaEjemplares ListEjem = new ListaEjemplares(datos, libro, edicion);
+		            				ListEjem.setVisible(true);
+		            		        Prestamos.this.setVisible(false);
 				        	 }
 				        	 }
 				 }catch(HeadlessException a){

@@ -81,7 +81,7 @@ public class ListaEjemplares extends JFrame {
 		btnNewButton_1.setBounds(299, 493, 98, 26);
 		contentPane.add(btnNewButton_1);
 		
-		JButton btnNewButton_1_1 = new JButton("Reservar");
+		JButton btnNewButton_1_1 = new JButton("Prestamo");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 int fila;
@@ -98,7 +98,7 @@ public class ListaEjemplares extends JFrame {
                             }else{
                                	JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra prestado, reservelo o solicite el pretamos de otro ejemplar", "Prestamo", JOptionPane.INFORMATION_MESSAGE);
                             	}}else {
-                            		JOptionPane.showMessageDialog(null,"Error", "Este ejemplar fue dado de baja", JOptionPane.ERROR_MESSAGE);
+                            		JOptionPane.showMessageDialog(null,"Este ejemplar fue dado de baja", "Error", JOptionPane.ERROR_MESSAGE);
                             	}
                             }
 				 }catch(HeadlessException a){
@@ -106,7 +106,7 @@ public class ListaEjemplares extends JFrame {
 				 }
 			}
 		});
-		btnNewButton_1_1.setBounds(435, 493, 86, 26);
+		btnNewButton_1_1.setBounds(435, 493, 90, 26);
 		contentPane.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_1_2 = new JButton("Atras");
@@ -120,7 +120,7 @@ public class ListaEjemplares extends JFrame {
 		btnNewButton_1_2.setBounds(187, 493, 65, 26);
 		contentPane.add(btnNewButton_1_2);
 		
-		JButton btnNewButton_1_1_1 = new JButton("Prestamo");
+		JButton btnNewButton_1_1_1 = new JButton("Reserva");
 		btnNewButton_1_1_1.setBounds(554, 493, 90, 26);
 		contentPane.add(btnNewButton_1_1_1);
 		

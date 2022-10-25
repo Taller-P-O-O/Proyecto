@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import biblioteca.ConexionObjetosMenus;
+import biblioteca.Prestamo;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -20,7 +21,8 @@ public class Multa extends JFrame {
 	private final ConexionObjetosMenus datos;
 	
 
-	public Multa(ConexionObjetosMenus dato) {
+	public Multa(ConexionObjetosMenus dato, Prestamo prestamo) {
+		setTitle("Multa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		datos = dato;
 		setBounds(100, 100, 316, 224);
@@ -31,20 +33,20 @@ public class Multa extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Cantidad dias multa");
-		lblNewLabel.setBounds(61, 74, 94, 14);
+		lblNewLabel.setBounds(40, 73, 112, 16);
 		contentPane.add(lblNewLabel);
 		
 		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), null, new Integer(1)));
-		spinner.setBounds(186, 71, 71, 20);
+		spinner.setBounds(175, 71, 71, 20);
 		contentPane.add(spinner);
 		
 		JButton btnNewButton = new JButton("Atras");
-		btnNewButton.setBounds(45, 132, 89, 23);
+		btnNewButton.setBounds(40, 132, 65, 26);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Aplicar multa");
-		btnNewButton_1.setBounds(164, 132, 93, 23);
+		btnNewButton_1.setBounds(156, 132, 109, 26);
 		contentPane.add(btnNewButton_1);
 	}
 }
