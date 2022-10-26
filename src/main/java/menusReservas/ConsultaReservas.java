@@ -91,7 +91,7 @@ public class ConsultaReservas extends JFrame {
     				    		        reser.setVisible(true);
     				    		        ConsultaReservas.this.setVisible(false);
                                     } else {
-                                    	JOptionPane.showMessageDialog(null,"Error", "Este lector se encuentra multado hasta: " + datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).getReservante().getFechaFinUltimaMulta() , JOptionPane.ERROR_MESSAGE);
+                                    	JOptionPane.showMessageDialog(null,"Este lector se encuentra multado hasta: " + datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).getReservante().getFechaFinUltimaMulta(),  "Error", JOptionPane.ERROR_MESSAGE);
                                     }
 				        	 }
 				         } }catch(HeadlessException a){

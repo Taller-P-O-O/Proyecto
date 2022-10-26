@@ -165,6 +165,18 @@ public class ListaEjemplares extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
+		
+		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
+	    table.setModel(model);
+		
+		model.addColumn("Obra");
+		model.addColumn("Editoria");
+		model.addColumn("Codigo de barras");
+		model.addColumn("Posicion en la biblioteca");
+		model.addColumn("Id");
+		model.addColumn("Forma de adquisicion");
+		
+		llenarTabla();
 
 	}
 	public void llenarTabla() {
