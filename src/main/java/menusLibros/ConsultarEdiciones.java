@@ -165,7 +165,7 @@ public class ConsultarEdiciones extends JFrame {
 	    
 	    btnNewButton_2.setBounds(633, 515, 180, 26);
 	    contentPane.add(btnNewButton_2);
-	    
+
 		model.addColumn("Obra");
 		model.addColumn("Editorial");
 		model.addColumn("Pais de edicion");

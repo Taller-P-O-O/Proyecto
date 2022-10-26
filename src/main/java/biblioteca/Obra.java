@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Obra {
+public class Obra{
 
 	private String tipo;
 	private String tematica;
@@ -142,5 +142,6 @@ public class Obra {
     
     public void agregarEjemplar(int codigoBarras, String posicionBiblio, int iDUnica, LocalDate fechaAdqui, String formaAdqui, Edicion edicion) {
     	ejemplares.add(new Ejemplar(codigoBarras, posicionBiblio, iDUnica, fechaAdqui, formaAdqui, this,  edicion));
-    }		
+    }
+		
 }

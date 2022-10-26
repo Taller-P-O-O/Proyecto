@@ -19,6 +19,7 @@ import menusPrestamos.ConsultaPrestamos;
 import menusPrestamos.Multa;
 
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JRadioButton;
@@ -136,6 +137,7 @@ public class ConsultaReservas extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		
 		JLabel lblNewLabel = new JLabel("Dias de prestamo:");

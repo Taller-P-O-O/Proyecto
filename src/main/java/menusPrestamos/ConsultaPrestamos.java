@@ -19,6 +19,7 @@ import menusLibros.ConsultaObras;
 import menusLibros.RegistrarEdicion;
 
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -60,6 +61,7 @@ public class ConsultaPrestamos extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		table = new JTable();
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
 		
 		JButton btnNewButton_1 = new JButton("Registrar devolucion");

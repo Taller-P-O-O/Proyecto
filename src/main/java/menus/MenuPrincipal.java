@@ -18,7 +18,8 @@ import menusPrestamos.ConsultaMultas;
 import menusPrestamos.ConsultaPrestamos;
 import menusReservas.ConsultaReservas;
 import rankings.LectoresConMasMultas;
-import rankings.ObrasMasSolicitadas;
+import rankings.ObrasMasSolicitadasPorAlumYProf;
+import rankings.ObrasMasSolicitadasPorPublGen;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -170,11 +171,11 @@ public class MenuPrincipal extends JFrame {
 		JMenu mnNewMenu_4 = new JMenu("Rankings");
 		menuBar.add(mnNewMenu_4);
 		
-		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Obras mas solicitadas");
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Obras mas solicitadas por publico general");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ObrasMasSolicitadas ObrMS = new ObrasMasSolicitadas(datos);
-				ObrMS.setVisible(true);
+				ObrasMasSolicitadasPorPublGen ObrMSPG = new ObrasMasSolicitadasPorPublGen(datos);
+				ObrMSPG.setVisible(true);
 				MenuPrincipal.this.setVisible(false);
 			}
 		});
@@ -188,6 +189,16 @@ public class MenuPrincipal extends JFrame {
 				MenuPrincipal.this.setVisible(false);
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Obras mas solicitadas por Alumnos y profesores");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ObrasMasSolicitadasPorAlumYProf ObrMSAYP = new ObrasMasSolicitadasPorAlumYProf(datos);
+				ObrMSAYP.setVisible(true);
+				MenuPrincipal.this.setVisible(false);
+			}
+		});
+		mnNewMenu_4.add(mntmNewMenuItem_4);
 		mnNewMenu_4.add(mntmNewMenuItem_14);
 		
 		JScrollPane scrollPane = new JScrollPane();
