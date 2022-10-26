@@ -69,10 +69,12 @@ public class ListaEjemplares extends JFrame {
 				     if (fila == -1){JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
 				         }else{
                              Integer id = (Integer) table.getValueAt(fila, 4); 
-                             
+                             if(datos.BuscarEjemplar(libro.getISBN(), id).isDadoBaja() == false) {
                              BajaEjemplar bajEjam = new BajaEjemplar(datos, libro, edicion, datos.BuscarEjemplar(libro.getISBN(), id));
                              bajEjam.setVisible(true);
-                             ListaEjemplares.this.setVisible(false);
+                             ListaEjemplares.this.setVisible(false);} else {
+                            	 JOptionPane.showMessageDialog(null, "Este ejemplar ya se encuentra dado de baja", "Baja ejemplar", JOptionPane.INFORMATION_MESSAGE); 
+                             }
 				         }
 				 }catch(HeadlessException a){
 					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
@@ -131,8 +133,8 @@ public class ListaEjemplares extends JFrame {
 				         }else{
                              Integer id = (Integer) table.getValueAt(fila, 4);
                              if(datos.BuscarEjemplar(libro.getISBN(), id).isDadoBaja() == false) {
-                            if(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario() == null) { 
-                            	if(datos.BuscarEjemplar(libro.getISBN(), id).getReservante() != null) {
+                            if(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario() != null) { 
+                            	if(datos.BuscarEjemplar(libro.getISBN(), id).getReservante() == null) {
                              Reservas prest = new Reservas(datos, libro, edicion, datos.BuscarEjemplar(libro.getISBN(), id), datos.buscarPrestamo(datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getPrestatario().getTipo(), datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getPrestatario().getDni(), datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getEjemplarPrestado().getEdicion().getObra().getISBN(),  datos.BuscarEjemplar(libro.getISBN(), id).getPrestatario().getEjemplarPrestado().getIDUnica()).getFechaEstimadaDevol());
                              prest.setVisible(true);
                              ListaEjemplares.this.setVisible(false);

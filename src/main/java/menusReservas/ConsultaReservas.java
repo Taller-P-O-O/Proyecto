@@ -76,8 +76,8 @@ public class ConsultaReservas extends JFrame {
 				         }else{
 				        	 String obra = (String) table.getValueAt(fila, 1);
 				        	 Integer IdEjemplar = (Integer) table.getValueAt(fila, 2);
-				        	 String tipoDoc = (String) table.getValueAt(fila, 5);
-				        	 Integer numDni = (Integer) table.getValueAt(fila, 6); 
+				        	 String tipoDoc = (String) table.getValueAt(fila, 4);
+				        	 Integer numDni = (Integer) table.getValueAt(fila, 5); 
 				        	 if(datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).getReservante().getFechaFinUltimaMulta() == null) {
 				        			datos.convertirAPrestamos(datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar), 1);
 				        			ConsultaReservas reser = new ConsultaReservas(datos);
@@ -136,7 +136,7 @@ public class ConsultaReservas extends JFrame {
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
-		table.setModel(model);
+
 		
 		JLabel lblNewLabel = new JLabel("Dias de prestamo:");
 		lblNewLabel.setBounds(297, 372, 103, 16);
@@ -147,6 +147,8 @@ public class ConsultaReservas extends JFrame {
 		
 		model = new DefaultTableModel(){ @Override public boolean isCellEditable(int row, int column) { return false; } };
 	    
+		table.setModel(model);
+		
 		model.addColumn("Obra");
 		model.addColumn("ISBN");
 		model.addColumn("ID ejemplar");
