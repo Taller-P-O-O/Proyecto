@@ -196,9 +196,22 @@ public class ConexionObjetosMenus {
 	    return w;
 	}
 	
-	public Reserva buscarReserva() {
-		
-		
+	public Reserva buscarReserva(String tipoD, int NumDn,String obra, int Id) {
+		Reserva w = null;
+		for(int indice = 0; indice <Reservas.size() ;indice++)
+		{
+	     if (Reservas.get(indice).getReservante().equals(BuscarLector(tipoD, NumDn)) && Reservas.get(indice).getEjemplarReservado().equals(BuscarEjemplar(obra, Id))) {
+	        	  w = Reservas.get(indice);
+	     } 
+		}
+	    return w;
+	}
+	
+	
+	public void convertirAPrestamos(Reserva reser, int dias) {
+		Prestamos.add(new Prestamo(reser.getEjemplarReservado(), dias, reser.getReservante(), this.getUsuarioActivo().getNombreYApellido(), reser.getEjemplarReservado().getEdicion().getObra().getTematica()));
+	    reser.getEjemplarReservado().setReservante(null);
+	    reser.getReservante().eliminarReserva(reser.getEjemplarReservado().getIDUnica());
 	}
 	
 	

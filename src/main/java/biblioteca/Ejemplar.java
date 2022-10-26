@@ -30,6 +30,8 @@ public class Ejemplar {
 		this.formaAdqui = formaAdqui;
 		this.obra = obra;
 		this.edicion = edicion;
+		this.reservante = null;
+		this.prestatario = null;
 	}
 
 public void aumentarSolicitudPubGen() {

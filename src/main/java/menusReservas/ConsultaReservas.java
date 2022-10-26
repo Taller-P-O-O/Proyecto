@@ -27,6 +27,9 @@ import java.time.LocalDate;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.JSpinner;
+import javax.swing.JLabel;
+import javax.swing.SpinnerNumberModel;
 
 public class ConsultaReservas extends JFrame {
 
@@ -41,7 +44,7 @@ public class ConsultaReservas extends JFrame {
 		setTitle("Consulta Reservas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		datos = dato;
-		setBounds(100, 100, 684, 428);
+		setBounds(100, 100, 747, 477);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -51,14 +54,19 @@ public class ConsultaReservas extends JFrame {
 		textField = new JTextField();
 		textField.setToolTipText("");
 		textField.setColumns(10);
-		textField.setBounds(10, 12, 588, 20);
+		textField.setBounds(10, 12, 637, 20);
 		contentPane.add(textField);
 		
 		JButton btnNewButton = new JButton("Buscar");
-		btnNewButton.setBounds(593, 12, 75, 20);
+		btnNewButton.setBounds(644, 12, 75, 20);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Registrar prestamo");
+		final JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+		spinner.setBounds(418, 370, 45, 20);
+		contentPane.add(spinner);
+		
+		JButton btnNewButton_1 = new JButton("Convertir a prestamo");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				 int fila;
@@ -69,24 +77,29 @@ public class ConsultaReservas extends JFrame {
 				        	 String obra = (String) table.getValueAt(fila, 1);
 				        	 Integer IdEjemplar = (Integer) table.getValueAt(fila, 2);
 				        	 String tipoDoc = (String) table.getValueAt(fila, 5);
-				        	 Integer numDni = (Integer) table.getValueAt(fila, 6);
-				        	 datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).ConvertirPrestamo(datos.getUsuarioActivo().getNombreYApellido());
-				        	 if(datos.buscarPrestamo(tipoDoc, numDni, obra, IdEjemplar).getFechaEstimadaDevol().isBefore(LocalDate.now())) {
-				        			Multa Mul = new Multa(datos, datos.buscarPrestamo(tipoDoc, numDni, obra, IdEjemplar));
-				    		        Mul.setVisible(true);
-				    		        ConsultaPrestamos.this.setVisible(false);
+				        	 Integer numDni = (Integer) table.getValueAt(fila, 6); 
+				        	 if(datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).getReservante().getFechaFinUltimaMulta() == null) {
+				        			datos.convertirAPrestamos(datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar), 1);
+				        			ConsultaReservas reser = new ConsultaReservas(datos);
+				    		        reser.setVisible(true);
+				    		        ConsultaReservas.this.setVisible(false);
 				        	 } else {
-				        		ConsultaPrestamos ConPre = new ConsultaPrestamos(datos);
-				 				ConPre.setVisible(true);
-				 				ConsultaReservas.this.setVisible(false);
+                                    if(datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).getReservante().getFechaFinUltimaMulta().isBefore(LocalDate.now())) {
+                                		datos.convertirAPrestamos(datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar), Integer.parseInt(spinner.getValue().toString()));
+    				        			ConsultaReservas reser = new ConsultaReservas(datos);
+    				    		        reser.setVisible(true);
+    				    		        ConsultaReservas.this.setVisible(false);
+                                    } else {
+                                    	JOptionPane.showMessageDialog(null,"Error", "Este lector se encuentra multado hasta: " + datos.buscarReserva(tipoDoc, numDni, obra, IdEjemplar).getReservante().getFechaFinUltimaMulta() , JOptionPane.ERROR_MESSAGE);
+                                    }
 				        	 }
 				         } }catch(HeadlessException a){
 					 JOptionPane.showMessageDialog(null,"Error", "Inténtelo nuevamente", JOptionPane.ERROR_MESSAGE);
 				 }
 			} 
-			}
 		});
-		btnNewButton_1.setBounds(343, 363, 145, 26);
+		
+		btnNewButton_1.setBounds(403, 400, 154, 26);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_1_2 = new JButton("Atras");
@@ -97,33 +110,37 @@ public class ConsultaReservas extends JFrame {
 		        ConsultaReservas.this.setVisible(false);
 			}
 		});
-		btnNewButton_1_2.setBounds(228, 363, 65, 26);
+		btnNewButton_1_2.setBounds(213, 400, 65, 26);
 		contentPane.add(btnNewButton_1_2);
 		
 		JRadioButton rdbtnNombreObra = new JRadioButton("Nombre obra");
 		rdbtnNombreObra.setSelected(true);
-		rdbtnNombreObra.setBounds(83, 40, 99, 24);
+		rdbtnNombreObra.setBounds(87, 34, 99, 24);
 		contentPane.add(rdbtnNombreObra);
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Nombre lector");
-		rdbtnNewRadioButton_1.setBounds(353, 40, 106, 24);
+		rdbtnNewRadioButton_1.setBounds(357, 34, 106, 24);
 		contentPane.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_1_1 = new JRadioButton("DNI");
-		rdbtnNewRadioButton_1_1.setBounds(503, 40, 44, 24);
+		rdbtnNewRadioButton_1_1.setBounds(513, 34, 44, 24);
 		contentPane.add(rdbtnNewRadioButton_1_1);
 		
 		JRadioButton rdbtnNewRadioButton_1_4 = new JRadioButton("ID");
-		rdbtnNewRadioButton_1_4.setBounds(212, 40, 37, 23);
+		rdbtnNewRadioButton_1_4.setBounds(213, 35, 37, 23);
 		contentPane.add(rdbtnNewRadioButton_1_4);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 66, 646, 285);
+		scrollPane.setBounds(10, 66, 709, 285);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(model);
+		
+		JLabel lblNewLabel = new JLabel("Dias de prestamo:");
+		lblNewLabel.setBounds(297, 372, 103, 16);
+		contentPane.add(lblNewLabel);
 		
 	    table.getTableHeader().setReorderingAllowed(false);
 		

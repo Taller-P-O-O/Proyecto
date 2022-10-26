@@ -188,6 +188,15 @@ public abstract class Lector {
 	public void aumentarCantidadMultas() {
 		this.cantidadMultas++;
 	}
+	
+	public void eliminarReserva(int id){
+		for(int indice = 0; indice <ejemplaresReservado.size() ;indice++)
+		{
+	     if (ejemplaresReservado.get(indice).getEjemplarReservado().getIDUnica() == id) {
+	        	  ejemplaresReservado.remove(indice);
+	     } 
+		}
+	}
 
     
 }
